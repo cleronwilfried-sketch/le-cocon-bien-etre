@@ -1,70 +1,188 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Le Cocon Bien-Être — Pont-l’Évêque</title>
-<meta name="description" content="Le Cocon Bien-Être à Pont-l’Évêque : Head Spa, réflexologie, massages et naturopathie.">
-<style>
-:root{--cream:#fbf7f0;--ink:#3b3832;--gold:#b69a61;--white:#fff}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,"Times New Roman",serif}
-.poster{position:relative;width:min(100%,1024px);margin:auto;line-height:0;background:#303839}
-.poster img{display:block;width:100%;height:auto}
-.hotspot{position:absolute;display:block;line-height:normal;z-index:2;border-radius:18px}
-.hotspot:focus-visible{outline:3px solid white;outline-offset:2px;background:#ffffff22}
-.planity-services{left:6.2%;top:69.8%;width:25%;height:6.2%}
-.planity-tarifs{left:37.8%;top:69.8%;width:25%;height:6.2%}
-.planity-review{left:69%;top:69%;width:27%;height:4.5%}
-.google-review{left:69%;top:73.8%;width:27%;height:4.5%}
-.phone{left:5%;top:84.2%;width:27%;height:3.7%}
-.instagram{left:5%;top:88%;width:27%;height:3.8%}
-.facebook{left:5%;top:91.5%;width:28%;height:3.6%}
-.planity-booking{left:68.7%;top:88.4%;width:27.5%;height:4.2%}
-.gallery{padding:68px 22px 78px;text-align:center;background:linear-gradient(180deg,#fbf7f0,#f2eee5)}
-.eyebrow{font:600 11px/1.5 Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-h1{font-weight:normal;font-size:clamp(32px,5vw,54px);margin:12px 0;color:#4a463e}
-.intro{font:15px/1.8 Arial,sans-serif;color:#706a60;max-width:610px;margin:0 auto 34px}
-.rule{width:58px;height:1px;background:var(--gold);margin:20px auto 28px}
-.tiles{width:min(100%,1000px);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;text-align:left}
-.tile{position:relative;height:320px;min-width:0;overflow:hidden;border-radius:12px;background:#e7e1d5;box-shadow:0 8px 24px #554a3210}
-.tile img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .35s ease}
-.tile:hover img{transform:scale(1.035)}
-.tile .label{position:absolute;left:0;right:0;bottom:0;padding:48px 18px 18px;color:var(--white);font:14px/1.4 Arial,sans-serif;letter-spacing:.04em;background:linear-gradient(transparent,#3b3832c9)}
-.footer{padding:24px;text-align:center;font:12px Arial,sans-serif;color:#746e63;background:#e9e4da}
-@media(max-width:650px){.gallery{padding:48px 14px 56px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tile{height:250px}.intro{font-size:14px}}
-@media(max-width:380px){.tiles{grid-template-columns:1fr}.tile{height:300px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Le Cocon Bien-Être à Pont-l’Évêque : head spa, modelages et soins bien-être.">
+  <title>Le Cocon Bien-Être | Pont-l’Évêque</title>
+  <style>
+    :root {
+      --cream: #f8f4ed;
+      --gold: #b18a4a;
+      --gold-dark: #87652f;
+      --ink: #342e27;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .page { width: min(1100px, 100% - 32px); margin: 0 auto; }
+    header { padding: 26px 0 18px; text-align: center; }
+    header h1 {
+      margin: 0;
+      color: var(--gold-dark);
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      letter-spacing: .04em;
+    }
+    header p { margin: 8px 0 0; font-family: Arial, sans-serif; font-size: .95rem; }
+    .poster-wrap { margin: 0 auto 38px; text-align: center; }
+    .poster-wrap img {
+      display: block; width: 100%; height: auto; max-height: 760px;
+      object-fit: contain; border-radius: 8px;
+    }
+    .section-title { text-align: center; margin: 36px 0 22px; }
+    .section-title h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.1rem); color: var(--gold-dark); }
+    .section-title p { font-family: Arial, sans-serif; margin: 9px 0 0; }
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .tile {
+      display: block; border: 0; padding: 0; background: transparent; cursor: zoom-in;
+      border-radius: 9px; overflow: hidden; box-shadow: 0 4px 18px #4b39201a;
+    }
+    .tile img {
+      display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+      transition: transform .25s ease;
+    }
+    .tile:hover img { transform: scale(1.035); }
+    .booking { display: flex; justify-content: center; padding: 30px 0 48px; }
+    .booking a {
+      display: inline-block; background: linear-gradient(135deg, #c5a466, #9b7438);
+      color: white; padding: 15px 30px; border-radius: 999px;
+      text-decoration: none; font: 700 1rem Arial, sans-serif;
+      letter-spacing: .02em; box-shadow: 0 5px 14px #6d4b1e33;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .booking a:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    footer { padding: 22px 0 30px; border-top: 1px solid #d8cbb7; text-align: center; font: .9rem Arial, sans-serif; }
+    footer a { color: var(--gold-dark); margin: 0 8px; }
+    .lightbox {
+      position: fixed; inset: 0; z-index: 1000; display: none;
+      align-items: center; justify-content: center; padding: 24px;
+      background: rgb(15 13 11 / 90%);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      display: block; max-width: min(1200px, 94vw); max-height: 88vh;
+      width: auto; height: auto; object-fit: contain; border-radius: 5px;
+      box-shadow: 0 8px 35px #0008;
+    }
+    .close-lightbox {
+      position: absolute; top: 12px; right: 18px; border: 0; background: transparent;
+      color: white; font: 2.5rem Arial, sans-serif; cursor: pointer; line-height: 1;
+    }
+    .lightbox-hint {
+      position: absolute; bottom: 14px; left: 0; right: 0; text-align: center;
+      color: #eee; font: .85rem Arial, sans-serif;
+    }
+    @media (max-width: 700px) {
+      .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .page { width: min(100% - 22px, 1100px); }
+      header { padding-top: 20px; }
+    }
+    @media (max-width: 420px) {
+      .tiles { grid-template-columns: 1fr; }
+      .tile img { aspect-ratio: 5 / 3; }
+      .booking a { width: 100%; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-<main>
-<section class="poster" aria-label="Site du Cocon Bien-Être">
-<img src="maquette.png" alt="Le Cocon Bien-Être : prestations Head Spa, réflexologie, massages et naturopathie à Pont-l’Évêque.">
-<a class="hotspot planity-services" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener" aria-label="Voir les prestations sur Planity"></a>
-<a class="hotspot planity-tarifs" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener" aria-label="Voir les tarifs sur Planity"></a>
-<a class="hotspot planity-review" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener" aria-label="Avis Planity"></a>
-<a class="hotspot google-review" href="https://www.google.com/search?q=Le+Cocon+Bien-%C3%AAtre+Pont-l%27%C3%89v%C3%AAque" target="_blank" rel="noopener" aria-label="Avis Google"></a>
-<a class="hotspot phone" href="tel:0259163936" aria-label="Appeler le salon"></a>
-<a class="hotspot instagram" href="https://www.instagram.com/lecocon.bienetre/" target="_blank" rel="noopener" aria-label="Instagram du Cocon"></a>
-<a class="hotspot facebook" href="https://www.facebook.com/lecoconpontleveque/" target="_blank" rel="noopener" aria-label="Facebook du Cocon"></a>
-<a class="hotspot planity-booking" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener" aria-label="Prendre rendez-vous sur Planity"></a>
-</section>
-<section class="gallery" id="galerie">
-<div class="eyebrow">Le Cocon Bien-Être · Pont-l’Évêque</div>
-<h1>Découvrez notre univers</h1>
-<div class="rule"></div>
-<p class="intro">Une parenthèse de douceur, de détente et de bien-être. Découvrez en images l’atmosphère du salon et nos espaces de relaxation.</p>
-<div class="tiles" aria-label="Galerie photo">
-<div class="tile"><img src="724511160_122149351503182139_4780958609297052759_n.jpg" alt="Le salon Le Cocon Bien-Être" loading="lazy"><div class="label">Le salon</div></div>
-<div class="tile"><img src="724540054_122149351563182139_6583275191948358890_n.jpg" alt="Espace Head Spa du salon" loading="lazy"><div class="label">Head Spa</div></div>
-<div class="tile"><img src="725664701_122149351041182139_6036633049039053558_n.jpg" alt="Espace bien-être" loading="lazy"><div class="label">Les soins</div></div>
-<div class="tile"><img src="726427459_122149351521182139_8187491120792924487_n.jpg" alt="Les modelages" loading="lazy"><div class="label">Les modelages</div></div>
-<div class="tile"><img src="855412664_122172241509182139_4356733676844190638_n.jpg" alt="Espace de réflexologie" loading="lazy"><div class="label">Réflexologie</div></div>
-<div class="tile"><img src="724511160_122149351503182139_4780958609297052759_n.jpg" alt="Ambiance du salon" loading="lazy"><div class="label">L’ambiance</div></div>
-</div>
-</section>
-</main>
-<footer class="footer">Le Cocon Bien-Être · Pont-l’Évêque · <a href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" style="color:inherit">Prendre rendez-vous sur Planity</a></footer>
+  <header class="page">
+    <h1>Le Cocon Bien-Être</h1>
+    <p>Head Spa · Modelages · Soins bien-être à Pont-l’Évêque</p>
+  </header>
+
+  <main class="page">
+    <section class="poster-wrap" aria-label="Affiche du salon">
+      <!-- Place ton fichier maquette.png dans le même dossier que index.html. -->
+      <img src="maquette.png" alt="Affiche du Cocon Bien-Être">
+    </section>
+
+    <section aria-labelledby="galerie-title">
+      <div class="section-title">
+        <h2 id="galerie-title">La galerie du Cocon</h2>
+        <p>Clique sur une photo pour l’agrandir.</p>
+      </div>
+
+      <div class="tiles">
+        <button class="tile" type="button" data-full="724511160_122149351503182139_4780958609297052759_n.jpg" aria-label="Agrandir la photo 1">
+          <img src="724511160_122149351503182139_4780958609297052759_n.jpg" alt="Photo du salon" loading="lazy">
+        </button>
+        <button class="tile" type="button" data-full="724540054_122149351563182139_6583275191948358890_n.jpg" aria-label="Agrandir la photo 2">
+          <img src="724540054_122149351563182139_6583275191948358890_n.jpg" alt="Photo du Cocon Bien-Être" loading="lazy">
+        </button>
+        <button class="tile" type="button" data-full="725664701_122149351041182139_6036633049039053558_n.jpg" aria-label="Agrandir la photo 3">
+          <img src="725664701_122149351041182139_6036633049039053558_n.jpg" alt="Soin bien-être" loading="lazy">
+        </button>
+        <button class="tile" type="button" data-full="726427459_122149351521182139_8187491120792924487_n.jpg" aria-label="Agrandir la photo 4">
+          <img src="726427459_122149351521182139_8187491120792924487_n.jpg" alt="Espace de soin" loading="lazy">
+        </button>
+        <button class="tile" type="button" data-full="855412664_122172241509182139_4356733676844190638_n.jpg" aria-label="Agrandir la photo 5">
+          <img src="855412664_122172241509182139_4356733676844190638_n.jpg" alt="Moment de détente" loading="lazy">
+        </button>
+        <button class="tile" type="button" data-full="724511160_122149351503182139_4780958609297052759_n.jpg" aria-label="Agrandir la photo 6">
+          <img src="724511160_122149351503182139_4780958609297052759_n.jpg" alt="Photo du salon" loading="lazy">
+        </button>
+      </div>
+
+      <div class="booking">
+        <a href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque"
+           target="_blank" rel="noopener noreferrer">Prendre rendez-vous sur Planity</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Le Cocon Bien-Être · Pont-l’Évêque</p>
+    <p>
+      <a href="tel:0259163936">02 59 16 39 36</a>
+      <a href="https://www.instagram.com/lecocon.bienetre/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/lecoconpontleveque/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.google.com/search?q=Le+Cocon+Bien-%C3%AAtre+Pont-l%27%C3%89v%C3%AAque" target="_blank" rel="noopener noreferrer">Avis Google</a>
+    </p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie">
+    <button class="close-lightbox" type="button" aria-label="Fermer la photo">&times;</button>
+    <img id="lightbox-image" src="" alt="Photo agrandie du Cocon Bien-Être">
+    <p class="lightbox-hint">Clique sur la croix ou en dehors de la photo pour fermer.</p>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeButton = document.querySelector('.close-lightbox');
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.tile').forEach((tile) => {
+      tile.addEventListener('click', () => {
+        lightboxImage.src = tile.dataset.full;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
