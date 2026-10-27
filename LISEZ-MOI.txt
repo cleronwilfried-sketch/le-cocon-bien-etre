@@ -1,0 +1,15 @@
+LE COCON BIEN-ÊTRE — nouveaux fichiers du site
+
+Contenu :
+- index.html : page du site avec galerie élégante ajoutée sous la maquette existante.
+- maquette.png : visuel existant, conservé.
+
+Publication sur Cloudflare Pages :
+1. Décompressez ce ZIP sur votre ordinateur.
+2. Dans Cloudflare > Workers & Pages > le-cocon-bien-etre, cliquez sur Create deployment.
+3. Choisissez Production, puis déposez les DEUX fichiers index.html et maquette.png (pas le ZIP).
+4. Cliquez sur Save and deploy.
+
+IMPORTANT — galerie :
+Cette version ajoute la présentation de la galerie, mais elle n'a pas encore de véritable espace privé d'importation. Pour que vous puissiez ajouter vous-même des photos et qu'elles soient visibles par tous les clients, il faut connecter un stockage en ligne. Je ne l'ai pas activé automatiquement, afin de ne pas créer de compte ni d'éventuelle facturation à votre place. Nous pouvons ensuite configurer ensemble une solution gratuite et vérifier ses limites.
+Ne modifiez pas les DNS et ne touchez pas aux enregistrements e-mail.
