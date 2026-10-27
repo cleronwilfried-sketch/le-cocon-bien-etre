@@ -32,9 +32,26 @@ h1{font-weight:normal;font-size:clamp(32px,5vw,54px);margin:12px 0;color:#4a463e
 .tiles .tile {
   position: relative;
   overflow: hidden;
-  height: auto;
+  height: 280px;
   min-height: 0;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
+  border-radius: 12px;
+}
+
+.tiles .tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.tiles .tile .label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
 }
 
 .tiles .tile img {
