@@ -11,7 +11,7 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
 .poster{position:relative;width:100%;max-width:1400px;margin:0 auto;line-height:0;background:#303839}
-.poster img{display:block;width:100%;height:auto}
+.poster>img{display:block;width:100%;height:auto}
 .hotspot{position:absolute;display:block;line-height:normal;z-index:2;border-radius:18px}
 .hotspot:focus-visible{outline:3px solid white;outline-offset:2px;background:#ffffff22}
 .planity-services{left:6.2%;top:69.8%;width:25%;height:6.2%}
@@ -35,7 +35,6 @@ h1{font-weight:normal;font-size:clamp(32px,5vw,54px);margin:12px 0;color:#4a463e
 .booking-wrap{margin:34px auto 0}
 .booking-button{display:inline-block;background:var(--gold);color:#fff;text-decoration:none;padding:16px 28px;border-radius:999px;font:600 13px/1.2 Arial,sans-serif;letter-spacing:.04em;box-shadow:0 6px 18px #6d573022;transition:background .2s,transform .2s}
 .booking-button:hover{background:#9f824b;transform:translateY(-1px)}
-.note{font:12px/1.7 Arial,sans-serif;color:#777064;max-width:650px;margin:25px auto 0}
 .footer{padding:24px;text-align:center;font:12px Arial,sans-serif;color:#746e63;background:#e9e4da}
 .footer a{color:inherit}
 .lightbox{position:fixed;inset:0;z-index:20;background:rgba(25,23,20,.9);display:none;align-items:center;justify-content:center;padding:24px}
@@ -72,37 +71,35 @@ h1{font-weight:normal;font-size:clamp(32px,5vw,54px);margin:12px 0;color:#4a463e
     <h1>Découvrez notre univers</h1>
     <div class="rule"></div>
     <p class="intro">Une parenthèse de douceur, de détente et de bien-être. Découvrez en images l’atmosphère du salon et nos instants de relaxation.</p>
+
     <div class="tiles" aria-label="Galerie photo">
-      <button class="tile" type="button" data-full="724511160_122149351503182139_4780958609297052759_n.jpg" aria-label="Agrandir la photo 1">
-        <img src="724511160_122149351503182139_4780958609297052759_n.jpg" alt="Photo du Cocon Bien-Être" loading="lazy">
-      </button>
-      <button class="tile" type="button" data-full="724540054_122149351563182139_6583275191948358890_n.jpg" aria-label="Agrandir la photo 2">
-        <img src="724540054_122149351563182139_6583275191948358890_n.jpg" alt="Photo du salon" loading="lazy">
-      </button>
-      <button class="tile" type="button" data-full="725664701_122149351041182139_6036633049039053558_n.jpg" aria-label="Agrandir la photo 3">
-        <img src="725664701_122149351041182139_6036633049039053558_n.jpg" alt="Photo du salon" loading="lazy">
-      </button>
-      <button class="tile" type="button" data-full="726427459_122149351521182139_8187491120792924487_n.jpg" aria-label="Agrandir la photo 4">
-        <img src="726427459_122149351521182139_8187491120792924487_n.jpg" alt="Photo du salon" loading="lazy">
-      </button>
-      <button class="tile" type="button" data-full="855412664_122172241509182139_4356733676844190638_n.jpg" aria-label="Agrandir la photo 5">
-        <img src="855412664_122172241509182139_4356733676844190638_n.jpg" alt="Photo du salon" loading="lazy">
-      </button>
-      <button class="tile" type="button" data-full="724511160_122149351503182139_4780958609297052759_n.jpg" aria-label="Agrandir la photo 6">
-        <img src="724511160_122149351503182139_4780958609297052759_n.jpg" alt="Photo du salon" loading="lazy">
-      </button>
+      <button class="tile" type="button" data-full="01.jpg" aria-label="Agrandir la photo 1"><img src="01.jpg" alt="Photo 1 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="02.jpg" aria-label="Agrandir la photo 2"><img src="02.jpg" alt="Photo 2 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="03.jpg" aria-label="Agrandir la photo 3"><img src="03.jpg" alt="Photo 3 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="04.jpg" aria-label="Agrandir la photo 4"><img src="04.jpg" alt="Photo 4 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="05.jpg" aria-label="Agrandir la photo 5"><img src="05.jpg" alt="Photo 5 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="06.jpg" aria-label="Agrandir la photo 6"><img src="06.jpg" alt="Photo 6 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="07.jpg" aria-label="Agrandir la photo 7"><img src="07.jpg" alt="Photo 7 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="08.jpg" aria-label="Agrandir la photo 8"><img src="08.jpg" alt="Photo 8 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="09.jpg" aria-label="Agrandir la photo 9"><img src="09.jpg" alt="Photo 9 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="10.jpg" aria-label="Agrandir la photo 10"><img src="10.jpg" alt="Photo 10 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="11.jpg" aria-label="Agrandir la photo 11"><img src="11.jpg" alt="Photo 11 du Cocon Bien-Être" loading="lazy"></button>
+      <button class="tile" type="button" data-full="12.jpg" aria-label="Agrandir la photo 12"><img src="12.jpg" alt="Photo 12 du Cocon Bien-Être" loading="lazy"></button>
     </div>
+
     <div class="booking-wrap">
       <a class="booking-button" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener">Prendre rendez-vous sur Planity</a>
     </div>
   </section>
 </main>
+
 <footer class="footer">Le Cocon Bien-Être · Pont-l’Évêque · <a href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener">Prendre rendez-vous sur Planity</a></footer>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie">
   <button class="lightbox-close" type="button" aria-label="Fermer la photo agrandie">×</button>
   <img src="" alt="Photo agrandie">
 </div>
+
 <script>
 (function(){
   const lightbox = document.getElementById('lightbox');
@@ -116,6 +113,7 @@ h1{font-weight:normal;font-size:clamp(32px,5vw,54px);margin:12px 0;color:#4a463e
     document.body.style.overflow = '';
     if(previousFocus) previousFocus.focus();
   }
+
   document.querySelectorAll('.tile').forEach(function(tile){
     tile.addEventListener('click', function(){
       const image = tile.querySelector('img');
@@ -127,6 +125,7 @@ h1{font-weight:normal;font-size:clamp(32px,5vw,54px);margin:12px 0;color:#4a463e
       closeButton.focus();
     });
   });
+
   closeButton.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', function(event){
     if(event.target === lightbox) closeLightbox();
