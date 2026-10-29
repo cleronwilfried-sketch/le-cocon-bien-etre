@@ -149,37 +149,73 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
 <div id="cocon-language-switcher" aria-label="Choisir la langue de l’affiche">
 <button type="button" data-lang="fr" aria-label="Français" aria-pressed="true" title="Français">🇫🇷<span class="lang-code">FR</span></button>
 <button type="button" data-lang="en" aria-label="English" aria-pressed="false" title="English">🇬🇧<span class="lang-code">EN</span></button>
-<button type="button" data-lang="es" aria-label="Español" title="Español — version à venir">🇪🇸<span class="lang-code">ES</span></button>
-<button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch — version à venir">🇩🇪<span class="lang-code">DE</span></button>
-<button type="button" data-lang="it" aria-label="Italiano" title="Italiano — version à venir">🇮🇹<span class="lang-code">IT</span></button>
-<button type="button" data-lang="nl" aria-label="Nederlands" title="Nederlands — version à venir">🇳🇱<span class="lang-code">NL</span></button>
-<button type="button" data-lang="ru" aria-label="Русский" title="Русский — version à venir">🇷🇺<span class="lang-code">RU</span></button>
+<button type="button" data-lang="es" aria-label="Español" title="Español">🇪🇸<span class="lang-code">ES</span></button>
+<button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch">🇩🇪<span class="lang-code">DE</span></button>
+<button type="button" data-lang="it" aria-label="Italiano" title="Italiano">🇮🇹<span class="lang-code">IT</span></button>
+<button type="button" data-lang="nl" aria-label="Nederlands" title="Nederlands">🇳🇱<span class="lang-code">NL</span></button>
+<button type="button" data-lang="ru" aria-label="Русский" title="Русский">🇷🇺<span class="lang-code">RU</span></button>
 </div><div id="google_translate_element" aria-hidden="true"></div>
 <script>
 (function(){
- var root=document.getElementById('cocon-language-switcher');
- var poster=document.getElementById('cocon-main-poster');
- if(!root||!poster)return;
- function setLang(lang){
-   if(lang!=='fr'&&lang!=='en') {
-     var b=root.querySelector('button[data-lang="'+lang+'"]');
-     if(b) window.alert('La version '+lang.toUpperCase()+' sera ajoutée plus tard. Pour le moment, les affiches française et anglaise sont disponibles.');
-     return;
-   }
-   poster.src=lang==='en'?'./maquette-en.png':'./maquette.png';
-   poster.alt=lang==='en'?'Le Cocon Wellness Studio poster in English.':'Affiche du Cocon Bien-Être en français.';
-   root.querySelectorAll('button[data-lang]').forEach(function(b){
-     b.setAttribute('aria-pressed',b.getAttribute('data-lang')===lang?'true':'false');
-   });
-   try{localStorage.setItem('cocon-poster-lang',lang)}catch(e){}
- }
- root.querySelectorAll('button[data-lang]').forEach(function(b){
-   b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))});
- });
- var initial='fr';
- try{initial=localStorage.getItem('cocon-poster-lang')||'fr'}catch(e){}
- if(initial!=='en')initial='fr';
- setLang(initial);
+  var translateReady = false;
+  window.googleTranslateElementInit = function(){
+    if (!window.google || !google.translate) return;
+    new google.translate.TranslateElement({pageLanguage:'fr', includedLanguages:'fr,en,es,de,it,nl,ru', autoDisplay:false}, 'google_translate_element');
+    translateReady = true;
+  };
+  function loadGoogleTranslate(){
+    if (document.getElementById('google-translate-loader')) return;
+    var script=document.createElement('script');
+    script.id='google-translate-loader';
+    script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async=true;
+    document.head.appendChild(script);
+  }
+  function applyGoogleLanguage(lang){
+    if(lang==='fr'){
+      var combo=document.querySelector('.goog-te-combo');
+      if(combo){combo.value='';combo.dispatchEvent(new Event('change'));}
+      return;
+    }
+    var combo=document.querySelector('.goog-te-combo');
+    if(combo){combo.value=lang;combo.dispatchEvent(new Event('change'));}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var root=document.getElementById('cocon-language-switcher');
+    var poster=document.getElementById('cocon-main-poster');
+    if(!root) return;
+    loadGoogleTranslate();
+    function setLang(lang){
+      if(!['fr','en','es','de','it','nl','ru'].includes(lang)) lang='fr';
+      if(poster){
+        // Les deux affiches existantes restent disponibles; pour les autres langues,
+        // le texte du site est traduit sans prétendre traduire le texte incrusté dans l'image.
+        poster.src = lang==='en' ? './maquette-en.png' : './maquette.png';
+        poster.alt = lang==='en' ? 'Le Cocon Wellness Studio poster in English.' : 'Affiche du Cocon Bien-Être; le texte de l’image reste en français pour cette langue.';
+      }
+      root.querySelectorAll('button[data-lang]').forEach(function(button){
+        button.setAttribute('aria-pressed',button.getAttribute('data-lang')===lang?'true':'false');
+        var label=button.getAttribute('aria-label')||button.title||lang;
+        button.title=label;
+      });
+      try{localStorage.setItem('cocon-poster-lang',lang);}catch(e){}
+      // Google Translate s'initialise de façon asynchrone : réessaie brièvement
+      // sans bloquer la page si le service n'est pas disponible.
+      var attempts=0;
+      var timer=setInterval(function(){
+        attempts++;
+        var combo=document.querySelector('.goog-te-combo');
+        if(combo){clearInterval(timer);applyGoogleLanguage(lang);}
+        else if(attempts>=20){clearInterval(timer);}
+      },250);
+    }
+    root.querySelectorAll('button[data-lang]').forEach(function(button){
+      button.addEventListener('click',function(){setLang(button.getAttribute('data-lang'));});
+    });
+    var initial='fr';
+    try{initial=localStorage.getItem('cocon-poster-lang')||'fr';}catch(e){}
+    setLang(initial);
+  });
 })();
 </script>
 
