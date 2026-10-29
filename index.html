@@ -241,17 +241,19 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
     root.querySelectorAll('button[data-lang]').forEach(function(button){
       button.addEventListener('click',function(){
         var lang = button.getAttribute('data-lang');
-        setLang(lang);
-        // Si Google Translate conserve un ancien état, le drapeau français recharge
-        // la page proprement après suppression du cookie de traduction.
         if(lang === 'fr'){
+          // Retour fiable à la page française : mémorise FR, supprime les cookies
+          // Google Translate sur les variantes de domaine, puis recharge la page.
+          try { localStorage.setItem('cocon-poster-lang','fr'); } catch(e) {}
           clearGoogleTranslateState();
-          var combo = document.querySelector('.goog-te-combo');
-          if(combo){
-            combo.value = '';
-            combo.dispatchEvent(new Event('change'));
-          }
+          document.cookie = 'googtrans=/fr/fr; path=/';
+          var host = location.hostname;
+          document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' + host;
+          document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' + host;
+          window.location.reload();
+          return;
         }
+        setLang(lang);
       });
     });
     var initial='fr';
