@@ -30,3 +30,8 @@ MAQUETTES MULTILINGUES (29/10/2026)
   téléphone +33 2 59 16 39 36 ;
   Instagram https://www.instagram.com/lecocon.bienetre/ ;
   Facebook https://www.facebook.com/lecoconpontleveque/.
+
+
+Correctif du 29/10/2026 : le bouton 🇫🇷 réinitialise désormais l'état de Google Translate et réaffiche la maquette française (maquette.png). Les autres drapeaux conservent leur maquette dédiée.
+
+Affiche anglaise mise à jour le 30/10/2026 : maquette-en.png a été remplacée par la nouvelle affiche fournie par l'utilisateur.

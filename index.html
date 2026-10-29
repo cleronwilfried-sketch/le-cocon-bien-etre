@@ -171,13 +171,25 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
     script.async=true;
     document.head.appendChild(script);
   }
+  function clearGoogleTranslateState(){
+    // Supprime l'état mémorisé par Google Translate afin de revenir réellement au français.
+    var domains = [location.hostname, '.' + location.hostname];
+    domains.forEach(function(domain){
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' + domain;
+    });
+    try { localStorage.removeItem('googtrans'); } catch(e) {}
+  }
   function applyGoogleLanguage(lang){
+    var combo=document.querySelector('.goog-te-combo');
     if(lang==='fr'){
-      var combo=document.querySelector('.goog-te-combo');
-      if(combo){combo.value='';combo.dispatchEvent(new Event('change'));}
+      clearGoogleTranslateState();
+      if(combo){
+        combo.value='';
+        combo.dispatchEvent(new Event('change'));
+      }
       return;
     }
-    var combo=document.querySelector('.goog-te-combo');
     if(combo){combo.value=lang;combo.dispatchEvent(new Event('change'));}
   }
   document.addEventListener('DOMContentLoaded',function(){
@@ -227,7 +239,20 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
       },250);
     }
     root.querySelectorAll('button[data-lang]').forEach(function(button){
-      button.addEventListener('click',function(){setLang(button.getAttribute('data-lang'));});
+      button.addEventListener('click',function(){
+        var lang = button.getAttribute('data-lang');
+        setLang(lang);
+        // Si Google Translate conserve un ancien état, le drapeau français recharge
+        // la page proprement après suppression du cookie de traduction.
+        if(lang === 'fr'){
+          clearGoogleTranslateState();
+          var combo = document.querySelector('.goog-te-combo');
+          if(combo){
+            combo.value = '';
+            combo.dispatchEvent(new Event('change'));
+          }
+        }
+      });
     });
     var initial='fr';
     try{initial=localStorage.getItem('cocon-poster-lang')||'fr';}catch(e){}
