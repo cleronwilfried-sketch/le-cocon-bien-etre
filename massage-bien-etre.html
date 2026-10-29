@@ -5,7 +5,7 @@
 #cocon-language-switcher button:hover,#cocon-language-switcher button:focus-visible,#cocon-language-switcher button[aria-pressed="true"]{border-color:#dfbd7d;background:#494336;outline:none}
 #cocon-language-switcher .lang-code{display:block;color:#fff;font-size:9px;letter-spacing:.04em;margin-top:3px}
 #google_translate_element{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important}
-.goog-te-banner-frame.skiptranslate{display:none!important}body{top:0!important}.goog-te-gadget{font-size:0!important} .goog-logo-link{display:none!important}
+.goog-te-banner-frame,.goog-te-banner-frame.skiptranslate,iframe.goog-te-banner-frame{display:none!important;visibility:hidden!important;height:0!important;width:0!important}body{top:0!important;position:static!important}html{margin-top:0!important}#goog-gt-tt,.goog-te-balloon-frame,.skiptranslate iframe{display:none!important;visibility:hidden!important}.goog-te-gadget{font-size:0!important} .goog-logo-link{display:none!important}
 @media(max-width:520px){#cocon-language-switcher{top:34px;left:50%;right:auto;transform:translateX(-50%);gap:2px;padding:4px 5px}#cocon-language-switcher button{font-size:17px;padding:4px 3px}}
 </style>
 </head><body>
@@ -15,6 +15,7 @@
 <button type="button" data-lang="es" aria-label="Español" aria-pressed="false">🇪🇸<span class="lang-code">ES</span></button>
 <button type="button" data-lang="de" aria-label="Deutsch" aria-pressed="false">🇩🇪<span class="lang-code">DE</span></button>
 <button type="button" data-lang="it" aria-label="Italiano" aria-pressed="false">🇮🇹<span class="lang-code">IT</span></button>
+<button type="button" data-lang="nl" aria-label="Nederlands" aria-pressed="false">🇳🇱<span class="lang-code">NL</span></button>
 </div><div id="google_translate_element" aria-hidden="true"></div>
 <script>
 (function(){
@@ -37,7 +38,7 @@
    try{localStorage.removeItem('googtrans')}catch(e){}
  }
  function setLang(lang){
-   if(!['fr','en','es','de','it'].includes(lang)) return;
+   if(!['fr','en','es','de','it','nl'].includes(lang)) return;
    clearTranslateCookies();
    if(lang!=='fr'){
      writeCookie('googtrans','/fr/'+lang);
@@ -50,13 +51,13 @@
  }
  root.querySelectorAll('button[data-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))})});
  function currentLang(){
-   var match=document.cookie.match(/(?:^|;\s*)googtrans=\/fr\/(en|es|de|it)/);
+   var match=document.cookie.match(/(?:^|;\s*)googtrans=\/fr\/(en|es|de|it|nl)/);
    if(match)return match[1];
    try{var stored=localStorage.getItem('cocon-lang');if(stored)return stored}catch(e){}
    return 'fr';
  }
  var selected=currentLang();setPressed(selected);
- window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it',autoDisplay:false},'google_translate_element');};
+ window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it,nl',autoDisplay:false},'google_translate_element');};
  var script=document.createElement('script');script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';script.async=true;document.head.appendChild(script);
 })();
 </script>
