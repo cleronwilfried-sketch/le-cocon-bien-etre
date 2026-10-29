@@ -81,6 +81,14 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:v
 .service-card-link:hover h3,.service-card-link:focus-visible h3{color:#d7bd83}
 .service-card-link:focus-visible{outline:2px solid #d7bd83;outline-offset:4px}
 .service-card{cursor:pointer}
+
+.language-switcher{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.language-switcher button{display:inline-flex;align-items:center;justify-content:center;min-width:27px;height:27px;padding:2px;background:#252c2d;border:1px solid var(--gold);border-radius:6px;font-size:15px;line-height:1;cursor:pointer}
+.language-switcher button[aria-pressed="true"]{outline:2px solid var(--gold-light);outline-offset:1px;background:#4b4030}
+.nav-inner{flex-wrap:wrap}
+@media(max-width:520px){.nav-inner{gap:8px}.nav-brand{font-size:15px}.nav-brand small{font-size:8px}.language-switcher{gap:2px}.language-switcher button{min-width:24px;height:25px;font-size:14px}.menu-toggle{padding:7px 9px;gap:5px;font-size:10px}}
+#google_translate_element{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BeautySalon","name":"Le Cocon Bien-Être","url":"https://www.lecocon14.com/","image":"https://www.lecocon14.com/maquette.png","telephone":"+33259163936","address":{"@type":"PostalAddress","addressLocality":"Pont-l’Évêque","addressRegion":"Normandie","addressCountry":"FR"},"areaServed":"Pont-l’Évêque et alentours","sameAs":["https://www.instagram.com/lecocon.bienetre/","https://www.facebook.com/lecoconpontleveque/"]}</script>
 </head>
@@ -89,6 +97,13 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:v
 <header class="site-nav">
   <div class="nav-inner">
     <a class="nav-brand" href="./index.html" aria-label="Le Cocon Bien-Être, accueil">LE COCON<small>BIEN-ÊTRE · PONT-L’ÉVÊQUE</small></a>
+    <div class="language-switcher" id="language-switcher" aria-label="Choisir la langue du site">
+      <button type="button" data-lang="fr" aria-label="Français" title="Français">🇫🇷</button>
+      <button type="button" data-lang="en" aria-label="English" title="English">🇬🇧</button>
+      <button type="button" data-lang="es" aria-label="Español" title="Español">🇪🇸</button>
+      <button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch">🇩🇪</button>
+      <button type="button" data-lang="it" aria-label="Italiano" title="Italiano">🇮🇹</button>
+    </div>
     <button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="site-menu"><span class="menu-icon" aria-hidden="true">☰</span> MENU</button>
   </div>
   <nav class="menu-panel" id="site-menu" aria-label="Menu principal">
@@ -128,79 +143,25 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:v
 <script>(function(){const button=document.getElementById('menu-toggle');const menu=document.getElementById('site-menu');function closeMenu(){menu.classList.remove('open');button.setAttribute('aria-expanded','false')}button.addEventListener('click',function(){const isOpen=menu.classList.toggle('open');button.setAttribute('aria-expanded',String(isOpen))});menu.querySelectorAll('a').forEach(function(link){link.addEventListener('click',closeMenu)});document.addEventListener('click',function(event){if(!menu.contains(event.target)&&!button.contains(event.target))closeMenu()});document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeMenu();button.focus()}})})();</script>
 
 
-<!-- Sélecteur de langues Le Cocon Bien-Être -->
-<style>
-#cocon-language-bar{position:fixed;top:10px;right:12px;z-index:99999;display:flex;align-items:center;gap:5px;padding:6px 8px;background:rgba(37,44,45,.96);border:1px solid #c6a064;border-radius:12px;box-shadow:0 3px 14px rgba(0,0,0,.22)}
-#cocon-language-bar button{font:inherit;font-size:18px;line-height:1;padding:5px 6px;border:1px solid transparent;border-radius:7px;background:transparent;cursor:pointer}
-#cocon-language-bar button[aria-pressed="true"]{border-color:#dfbd7d;background:#494336}
-#cocon-language-bar button:focus-visible{outline:2px solid #dfbd7d;outline-offset:2px}
-#google_translate_element{position:fixed!important;left:-9999px!important;top:-9999px!important}
-.goog-te-banner-frame,.skiptranslate iframe{display:none!important}
-body{top:0!important}
-@media(max-width:600px){#cocon-language-bar{top:8px;right:8px;gap:2px;padding:4px 5px}#cocon-language-bar button{font-size:16px;padding:5px 4px}}
-</style>
-<nav id="cocon-language-bar" aria-label="Choisir la langue">
-<button type="button" data-lang="fr" aria-label="Français" title="Français" aria-pressed="true">🇫🇷</button>
-<button type="button" data-lang="en" aria-label="English" title="English" aria-pressed="false">🇬🇧</button>
-<button type="button" data-lang="es" aria-label="Español" title="Español" aria-pressed="false">🇪🇸</button>
-<button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false">🇩🇪</button>
-<button type="button" data-lang="it" aria-label="Italiano" title="Italiano" aria-pressed="false">🇮🇹</button>
-</nav>
 <div id="google_translate_element" aria-hidden="true"></div>
 <script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,en,es,de,it',autoDisplay:false},'google_translate_element');}
 (function(){
-  var bar=document.getElementById('cocon-language-bar');
-  if(!bar || bar.dataset.ready) return;
-  bar.dataset.ready='1';
-  var langNames={fr:'Français',en:'English',es:'Español',de:'Deutsch',it:'Italiano'};
-  function updateButtons(lang){
-    bar.querySelectorAll('button[data-lang]').forEach(function(b){
-      b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');
-    });
-  }
-  window.googleTranslateElementInit=function(){
-    if(window.google && google.translate && google.translate.TranslateElement){
-      new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,en,es,de,it',autoDisplay:false},'google_translate_element');
-    }
-  };
-  function setLanguage(lang){
-    updateButtons(lang);
-    if(lang==='fr'){
-      var cookieParts=document.cookie.split(';');
-      cookieParts.forEach(function(part){
-        var name=part.trim().split('=')[0];
-        if(name.indexOf('googtrans')!==-1){
-          document.cookie=name+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
-          document.cookie=name+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain='+location.hostname;
-        }
-      });
-      try{localStorage.removeItem('googtrans')}catch(e){}
-      location.reload();
-      return;
-    }
-    var tries=0;
-    var timer=setInterval(function(){
-      var select=document.querySelector('.goog-te-combo');
-      if(select){
-        clearInterval(timer);
-        select.value=lang;
-        select.dispatchEvent(new Event('change',{bubbles:true}));
-      } else if(++tries>30){
-        clearInterval(timer);
-        alert('La traduction est momentanément indisponible. Vérifiez votre connexion puis réessayez.');
-      }
-    },250);
-  }
-  bar.querySelectorAll('button[data-lang]').forEach(function(b){
-    b.addEventListener('click',function(){setLanguage(b.dataset.lang)});
-  });
-  try{
-    var cookie=document.cookie.split(';').map(function(s){return s.trim()}).find(function(s){return s.indexOf('googtrans=')===0});
-    if(cookie){var m=cookie.match(/\/fr\/([a-z]{2})/);if(m)updateButtons(m[1]);}
-  }catch(e){}
+ var buttons=document.querySelectorAll('.language-switcher button');
+ function chooseLanguage(lang){
+   buttons.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');});
+   if(lang==='fr'){
+     var cookie='; '+document.cookie; var parts=cookie.split('; googtrans=');
+     if(parts.length>1){document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain='+location.hostname;}
+     location.reload(); return;
+   }
+   var trySelect=function(){var sel=document.querySelector('#google_translate_element select');if(sel){sel.value=lang;sel.dispatchEvent(new Event('change'));return true;}return false;};
+   if(!trySelect()){var count=0;var timer=setInterval(function(){count++;if(trySelect()||count>30)clearInterval(timer);},250);}
+ }
+ buttons.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang==='fr'?'true':'false');b.addEventListener('click',function(){chooseLanguage(b.dataset.lang);});});
 })();
 </script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
