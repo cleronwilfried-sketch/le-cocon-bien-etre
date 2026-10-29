@@ -15,14 +15,18 @@ Cette version ajoute la présentation de la galerie, mais elle n'a pas encore de
 Ne modifiez pas les DNS et ne touchez pas aux enregistrements e-mail.
 
 
-LANGUES DE L’IMAGE D’ACCUEIL — préparation technique
-Le sélecteur de langue peut maintenant charger un visuel distinct selon le drapeau :
-- Français : maquette.png
-- Anglais : maquette-en.png
-- Espagnol : maquette-es.png
-- Allemand : maquette-de.png
-- Italien : maquette-it.png
-- Néerlandais : maquette-nl.png
-- Russe : maquette-ru.png
-
-Les six fichiers traduits ne sont pas encore fournis dans cette archive : tant qu’ils ne sont pas créés et ajoutés, le site affiche automatiquement maquette.png en remplacement. Les zones cliquables restent en place. Il faut préparer les six visuels traduits avant de publier pour que l’image change réellement de langue.
+MAQUETTES MULTILINGUES (29/10/2026)
+- Le drapeau français affiche maquette.png (affiche française).
+- Le drapeau anglais affiche maquette-en.png.
+- Le drapeau espagnol affiche maquette-es.png.
+- Le drapeau allemand affiche maquette-de.png.
+- Le drapeau italien affiche maquette-it.png.
+- Le drapeau néerlandais affiche maquette-nl.png.
+- Le drapeau russe affiche maquette-ru.png.
+- Les zones cliquables de l’affiche (Planity, avis Google, adresse/Maps,
+  téléphone, Instagram et Facebook) restent des liens HTML superposés à l’image.
+- Liens utilisés : Planity https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque ;
+  Maps pour 12 Rue Ménars, 14130 Pont-l’Évêque ;
+  téléphone +33 2 59 16 39 36 ;
+  Instagram https://www.instagram.com/lecocon.bienetre/ ;
+  Facebook https://www.facebook.com/lecoconpontleveque/.

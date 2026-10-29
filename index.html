@@ -25,7 +25,7 @@ a{color:inherit}
 .skip-link{position:absolute;left:-9999px;top:8px;background:#fff;padding:12px;z-index:100}.skip-link:focus{left:8px}
 .poster{position:relative;width:100%;max-width:1400px;margin:0 auto;line-height:0;background:var(--anthracite)}.poster>img{display:block;width:100%;height:auto}
 .hotspot{position:absolute;display:block;line-height:normal;z-index:2;border-radius:18px}.hotspot:focus-visible{outline:3px solid var(--gold-light);outline-offset:2px;background:#ffffff22}
-.planity-services{left:6.2%;top:69.8%;width:25%;height:6.2%}.planity-tarifs{left:37.8%;top:69.8%;width:25%;height:6.2%}.planity-review{left:69%;top:69%;width:27%;height:4.5%}.google-review{left:69%;top:73.8%;width:27%;height:4.5%}.phone{left:5%;top:84.2%;width:27%;height:3.7%}.instagram{left:5%;top:88%;width:27%;height:3.8%}.facebook{left:5%;top:91.5%;width:28%;height:3.6%}.planity-booking{left:68.7%;top:88.4%;width:27.5%;height:4.2%}
+.address-map{left:5%;top:80.8%;width:28%;height:4.8%}.planity-services{left:6.2%;top:69.8%;width:25%;height:6.2%}.planity-tarifs{left:37.8%;top:69.8%;width:25%;height:6.2%}.planity-review{left:69%;top:69%;width:27%;height:4.5%}.google-review{left:69%;top:73.8%;width:27%;height:4.5%}.phone{left:5%;top:84.2%;width:27%;height:3.7%}.instagram{left:5%;top:88%;width:27%;height:3.8%}.facebook{left:5%;top:91.5%;width:28%;height:3.6%}.planity-booking{left:68.7%;top:88.4%;width:27.5%;height:4.2%}
 .services,.gallery{position:relative;text-align:center;color:var(--ink);background:var(--anthracite);border-top:1px solid rgba(198,160,100,.65)}
 .services{padding:58px 22px 62px;border-bottom:1px solid rgba(198,160,100,.65)}
 .gallery{padding:58px 22px 62px}
@@ -146,66 +146,93 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
 </style>
 </head>
 <body>
-<div id="cocon-language-switcher" aria-label="Choisir la langue du site">
-<button type="button" data-lang="fr" aria-label="Français" aria-pressed="true">🇫🇷<span class="lang-code">FR</span></button>
-<button type="button" data-lang="en" aria-label="English" aria-pressed="false">🇬🇧<span class="lang-code">EN</span></button>
-<button type="button" data-lang="es" aria-label="Español" aria-pressed="false">🇪🇸<span class="lang-code">ES</span></button>
-<button type="button" data-lang="de" aria-label="Deutsch" aria-pressed="false">🇩🇪<span class="lang-code">DE</span></button>
-<button type="button" data-lang="it" aria-label="Italiano" aria-pressed="false">🇮🇹<span class="lang-code">IT</span></button>
-<button type="button" data-lang="nl" aria-label="Nederlands" aria-pressed="false">🇳🇱<span class="lang-code">NL</span></button>
-<button type="button" data-lang="ru" aria-label="Русский" aria-pressed="false">🇷🇺<span class="lang-code">RU</span></button>
+<div id="cocon-language-switcher" aria-label="Choisir la langue de l’affiche">
+<button type="button" data-lang="fr" aria-label="Français" aria-pressed="true" title="Français">🇫🇷<span class="lang-code">FR</span></button>
+<button type="button" data-lang="en" aria-label="English" aria-pressed="false" title="English">🇬🇧<span class="lang-code">EN</span></button>
+<button type="button" data-lang="es" aria-label="Español" title="Español">🇪🇸<span class="lang-code">ES</span></button>
+<button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch">🇩🇪<span class="lang-code">DE</span></button>
+<button type="button" data-lang="it" aria-label="Italiano" title="Italiano">🇮🇹<span class="lang-code">IT</span></button>
+<button type="button" data-lang="nl" aria-label="Nederlands" title="Nederlands">🇳🇱<span class="lang-code">NL</span></button>
+<button type="button" data-lang="ru" aria-label="Русский" title="Русский">🇷🇺<span class="lang-code">RU</span></button>
 </div><div id="google_translate_element" aria-hidden="true"></div>
 <script>
 (function(){
- var root=document.getElementById('cocon-language-switcher'); if(!root)return;
- function setPressed(lang){root.querySelectorAll('button[data-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-lang')===lang?'true':'false')})}
- function writeCookie(name,value,domain){
-   var cookie=name+'='+value+'; path=/; SameSite=Lax';
-   if(domain) cookie+='; domain='+domain;
-   document.cookie=cookie;
- }
- function clearTranslateCookies(){
-   var expired='; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';
-   document.cookie='googtrans='+expired;
-   var host=location.hostname;
-   document.cookie='googtrans='+expired+'; domain='+host;
-   if(host==='www.lecocon14.com'||host==='lecocon14.com'){
-     document.cookie='googtrans='+expired+'; domain=.lecocon14.com';
-     document.cookie='googtrans='+expired+'; domain=lecocon14.com';
-   }
-   try{localStorage.removeItem('googtrans')}catch(e){}
- }
- function setLang(lang){
-   if(!['fr','en','es','de','it','nl','ru'].includes(lang)) return;
-   clearTranslateCookies();
-   if(lang!=='fr'){
-     writeCookie('googtrans','/fr/'+lang);
-     var host=location.hostname;
-     if(host==='www.lecocon14.com'||host==='lecocon14.com') writeCookie('googtrans','/fr/'+lang,'.lecocon14.com');
-   }
-   try{localStorage.setItem('cocon-lang',lang)}catch(e){}
-   setPressed(lang);
-   applyPosterLanguage(lang);
-   location.reload();
- }
- function applyPosterLanguage(lang){
-   var poster=document.getElementById('cocon-home-poster');
-   if(!poster)return;
-   var code=lang||'fr';
-   var files={fr:'maquette.png',en:'maquette-en.png',es:'maquette-es.png',de:'maquette-de.png',it:'maquette-it.png',nl:'maquette-nl.png',ru:'maquette-ru.png'};
-   poster.onerror=function(){poster.onerror=null;poster.src='./maquette.png'};
-   poster.src='./'+(files[code]||files.fr);
- }
- root.querySelectorAll('button[data-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))})});
- function currentLang(){
-   var match=document.cookie.match(/(?:^|;\s*)googtrans=\/fr\/(en|es|de|it|nl|ru)/);
-   if(match)return match[1];
-   try{var stored=localStorage.getItem('cocon-lang');if(stored)return stored}catch(e){}
-   return 'fr';
- }
- var selected=currentLang();setPressed(selected);applyPosterLanguage(selected);
- window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it,nl,ru',autoDisplay:false},'google_translate_element');};
- var script=document.createElement('script');script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';script.async=true;document.head.appendChild(script);
+  var translateReady = false;
+  window.googleTranslateElementInit = function(){
+    if (!window.google || !google.translate) return;
+    new google.translate.TranslateElement({pageLanguage:'fr', includedLanguages:'fr,en,es,de,it,nl,ru', autoDisplay:false}, 'google_translate_element');
+    translateReady = true;
+  };
+  function loadGoogleTranslate(){
+    if (document.getElementById('google-translate-loader')) return;
+    var script=document.createElement('script');
+    script.id='google-translate-loader';
+    script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async=true;
+    document.head.appendChild(script);
+  }
+  function applyGoogleLanguage(lang){
+    if(lang==='fr'){
+      var combo=document.querySelector('.goog-te-combo');
+      if(combo){combo.value='';combo.dispatchEvent(new Event('change'));}
+      return;
+    }
+    var combo=document.querySelector('.goog-te-combo');
+    if(combo){combo.value=lang;combo.dispatchEvent(new Event('change'));}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var root=document.getElementById('cocon-language-switcher');
+    var poster=document.getElementById('cocon-main-poster');
+    if(!root) return;
+    loadGoogleTranslate();
+    function setLang(lang){
+      if(!['fr','en','es','de','it','nl','ru'].includes(lang)) lang='fr';
+      if(poster){
+        // Chaque drapeau affiche la maquette fournie dans la langue correspondante.
+        var posterFiles = {
+          fr: './maquette.png',
+          en: './maquette-en.png',
+          es: './maquette-es.png',
+          de: './maquette-de.png',
+          it: './maquette-it.png',
+          nl: './maquette-nl.png',
+          ru: './maquette-ru.png'
+        };
+        var posterLabels = {
+          fr: 'Affiche du Cocon Bien-Être en français.',
+          en: 'Le Cocon Well-being poster in English.',
+          es: 'Cartel de Le Cocon Bienestar en español.',
+          de: 'Plakat von Le Cocon Wellnesszentrum auf Deutsch.',
+          it: 'Locandina di Le Cocon Benessere in italiano.',
+          nl: 'Poster van Le Cocon Welzijn in het Nederlands.',
+          ru: 'Плакат Le Cocon на русском языке.'
+        };
+        poster.src = posterFiles[lang] || posterFiles.fr;
+        poster.alt = posterLabels[lang] || posterLabels.fr;
+      }
+      root.querySelectorAll('button[data-lang]').forEach(function(button){
+        button.setAttribute('aria-pressed',button.getAttribute('data-lang')===lang?'true':'false');
+        var label=button.getAttribute('aria-label')||button.title||lang;
+        button.title=label;
+      });
+      try{localStorage.setItem('cocon-poster-lang',lang);}catch(e){}
+      // Google Translate s'initialise de façon asynchrone : réessaie brièvement
+      // sans bloquer la page si le service n'est pas disponible.
+      var attempts=0;
+      var timer=setInterval(function(){
+        attempts++;
+        var combo=document.querySelector('.goog-te-combo');
+        if(combo){clearInterval(timer);applyGoogleLanguage(lang);}
+        else if(attempts>=20){clearInterval(timer);}
+      },250);
+    }
+    root.querySelectorAll('button[data-lang]').forEach(function(button){
+      button.addEventListener('click',function(){setLang(button.getAttribute('data-lang'));});
+    });
+    var initial='fr';
+    try{initial=localStorage.getItem('cocon-poster-lang')||'fr';}catch(e){}
+    setLang(initial);
+  });
 })();
 </script>
 
@@ -238,8 +265,9 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
   </nav>
 </header>
 <main id="contenu">
-<section class="poster" aria-label="Présentation du Cocon Bien-Être"><img id="cocon-home-poster" src="./maquette.png" data-base="./maquette" alt="Présentation du salon Le Cocon Bien-Être à Pont-l’Évêque et de ses prestations de bien-être.">
-<a class="hotspot planity-services" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Voir les prestations sur Planity"></a><a class="hotspot planity-tarifs" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Voir les tarifs sur Planity"></a><a class="hotspot planity-review" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Avis Planity"></a><a class="hotspot google-review" href="https://www.google.com/search?q=Le+Cocon+Bien-%C3%AAtre+Pont-l%27%C3%89v%C3%AAque" target="_blank" rel="noopener noreferrer" aria-label="Avis Google"></a><a class="hotspot phone" href="tel:+33259163936" aria-label="Appeler le salon"></a><a class="hotspot instagram" href="https://www.instagram.com/lecocon.bienetre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram du Cocon"></a><a class="hotspot facebook" href="https://www.facebook.com/lecoconpontleveque/" target="_blank" rel="noopener noreferrer" aria-label="Facebook du Cocon"></a><a class="hotspot planity-booking" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Prendre rendez-vous sur Planity"></a></section>
+<section class="poster" aria-label="Présentation du Cocon Bien-Être"><img id="cocon-main-poster" src="./maquette.png" alt="Affiche du Cocon Bien-Être en français.">
+<a class="hotspot planity-services" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Voir les prestations sur Planity"></a><a class="hotspot planity-tarifs" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Voir les tarifs sur Planity"></a><a class="hotspot planity-review" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Avis Planity"></a><a class="hotspot google-review" href="https://www.google.com/search?q=Le+Cocon+Bien-%C3%AAtre+12+Rue+M%C3%A9nars+Pont-l%27%C3%89v%C3%AAque+avis" target="_blank" rel="noopener noreferrer" aria-label="Avis Google"></a><a class="hotspot address-map" href="https://www.google.com/maps/search/?api=1&amp;query=12+Rue+M%C3%A9nars%2C+14130+Pont-l%27%C3%89v%C3%AAque" target="_blank" rel="noopener noreferrer" aria-label="Adresse du salon dans Google Maps"></a>
+<a class="hotspot phone" href="tel:+33259163936" aria-label="Appeler le salon"></a><a class="hotspot instagram" href="https://www.instagram.com/lecocon.bienetre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram du Cocon"></a><a class="hotspot facebook" href="https://www.facebook.com/lecoconpontleveque/" target="_blank" rel="noopener noreferrer" aria-label="Facebook du Cocon"></a><a class="hotspot planity-booking" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Prendre rendez-vous sur Planity"></a></section>
 <section class="services" id="about" aria-labelledby="services-title"><div class="services-inner"><div class="eyebrow">Votre parenthèse de douceur</div><h1 id="services-title">Le Cocon Bien-Être à Pont-l’Évêque</h1><p class="intro">Bienvenue au Cocon Bien-Être, un espace dédié à la détente et au lâcher-prise à Pont-l’Évêque, dans le Calvados. Découvrez nos soins et choisissez le moment de bien-être qui vous ressemble.</p><div class="service-grid">
 <article class="service-card"><a class="service-card-link" href="./head-spa.html" aria-label="Découvrir : Head Spa"><h3>Head Spa</h3><p>Offrez-vous une pause relaxante dédiée au cuir chevelu, avec des gestes enveloppants pour favoriser la détente et profiter d’un moment pour vous.</p></a></article><article class="service-card"><a class="service-card-link" href="./massage-bien-etre.html" aria-label="Découvrir : Massages bien-être"><h3>Massages bien-être</h3><p>Profitez d’un massage bien-être dans une atmosphère apaisante. Les gestes doux invitent à relâcher les tensions du quotidien et à retrouver une agréable sensation de détente.</p></a></article><article class="service-card"><a class="service-card-link" href="./massage-pierres-chaudes.html" aria-label="Découvrir : Massage aux pierres chaudes"><h3>Massage aux pierres chaudes</h3><p>La chaleur des pierres et les mouvements du modelage vous invitent à ralentir, à vous détendre et à profiter d’une parenthèse chaleureuse et réconfortante.</p></a></article><article class="service-card"><a class="service-card-link" href="./reflexologie-plantaire.html" aria-label="Découvrir : Réflexologie plantaire"><h3>Réflexologie plantaire</h3><p>Un soin de détente centré sur les pieds, réalisé par des pressions sur des zones précises, pour s’accorder un moment calme et favoriser le relâchement.</p></a></article><article class="service-card"><a class="service-card-link" href="./reflexologie-palmaire.html" aria-label="Découvrir : Réflexologie palmaire"><h3>Réflexologie palmaire</h3><p>Une pause douce dédiée aux mains, avec des pressions ciblées qui invitent à relâcher les tensions et à profiter d’un instant de relaxation.</p></a></article><article class="service-card"><a class="service-card-link" href="./naturopathie.html" aria-label="Découvrir : Naturopathie"><h3>Naturopathie</h3><p>Un accompagnement personnalisé autour de l’hygiène de vie et des habitudes du quotidien, pour faire le point sur vos besoins et vos objectifs de bien-être.</p></a></article></div><div class="booking-wrap"><a class="booking-button" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer">Découvrir les prestations et réserver</a></div></div></section>
 <section class="gallery" id="galerie" aria-labelledby="gallery-title"><div class="eyebrow">Le Cocon Bien-Être · Pont-l’Évêque</div><h2 id="gallery-title">Découvrez notre univers</h2><div class="rule"></div><p class="intro">Une parenthèse de douceur, de détente et de bien-être. Découvrez en images l’atmosphère du salon et nos instants de relaxation.</p><div class="tiles" aria-label="Galerie photo du salon">
