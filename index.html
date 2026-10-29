@@ -81,6 +81,35 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:v
 .service-card-link:hover h3,.service-card-link:focus-visible h3{color:#d7bd83}
 .service-card-link:focus-visible{outline:2px solid #d7bd83;outline-offset:4px}
 .service-card{cursor:pointer}
+
+/* Nouvelle disposition mobile : les drapeaux prennent leur propre ligne sous l'en-tête */
+@media (max-width: 600px) {
+  #cocon-language-switcher {
+    position: relative !important;
+    top: auto !important; left: auto !important; right: auto !important;
+    transform: none !important;
+    width: 100% !important; max-width: none !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: clamp(5px, 2.5vw, 12px) !important;
+    margin: 0 !important;
+    padding: 8px 10px !important;
+    border-radius: 0 !important;
+    border-left: 0 !important; border-right: 0 !important;
+    background: #252c2d !important;
+    box-shadow: none !important;
+    border-top: 1px solid #c7a86a !important;
+    border-bottom: 1px solid #c7a86a !important;
+  }
+  #cocon-language-switcher button {
+    min-width: 30px !important;
+    padding: 4px 5px !important;
+    font-size: clamp(17px, 4.8vw, 21px) !important;
+  }
+  #cocon-language-switcher .lang-code { display: none !important; }
+}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BeautySalon","name":"Le Cocon Bien-Être","url":"https://www.lecocon14.com/","image":"https://www.lecocon14.com/maquette.png","telephone":"+33259163936","address":{"@type":"PostalAddress","addressLocality":"Pont-l’Évêque","addressRegion":"Normandie","addressCountry":"FR"},"areaServed":"Pont-l’Évêque et alentours","sameAs":["https://www.instagram.com/lecocon.bienetre/","https://www.facebook.com/lecoconpontleveque/"]}</script>
 

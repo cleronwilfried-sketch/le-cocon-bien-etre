@@ -9,6 +9,35 @@ body{max-width:850px;margin:40px auto;padding:0 20px;font-family:Arial,sans-seri
 h1,h2{font-family:Georgia,serif;font-weight:normal}
 h2{color:#9b804c;margin-top:30px}
 a{color:#9b804c}
+
+/* Nouvelle disposition mobile : les drapeaux prennent leur propre ligne sous l'en-tête */
+@media (max-width: 600px) {
+  #cocon-language-switcher {
+    position: relative !important;
+    top: auto !important; left: auto !important; right: auto !important;
+    transform: none !important;
+    width: 100% !important; max-width: none !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: clamp(5px, 2.5vw, 12px) !important;
+    margin: 0 !important;
+    padding: 8px 10px !important;
+    border-radius: 0 !important;
+    border-left: 0 !important; border-right: 0 !important;
+    background: #252c2d !important;
+    box-shadow: none !important;
+    border-top: 1px solid #c7a86a !important;
+    border-bottom: 1px solid #c7a86a !important;
+  }
+  #cocon-language-switcher button {
+    min-width: 30px !important;
+    padding: 4px 5px !important;
+    font-size: clamp(17px, 4.8vw, 21px) !important;
+  }
+  #cocon-language-switcher .lang-code { display: none !important; }
+}
+
 </style>
 
 <style id="cocon-language-switcher-style">
