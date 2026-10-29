@@ -127,5 +127,80 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:v
 
 <script>(function(){const button=document.getElementById('menu-toggle');const menu=document.getElementById('site-menu');function closeMenu(){menu.classList.remove('open');button.setAttribute('aria-expanded','false')}button.addEventListener('click',function(){const isOpen=menu.classList.toggle('open');button.setAttribute('aria-expanded',String(isOpen))});menu.querySelectorAll('a').forEach(function(link){link.addEventListener('click',closeMenu)});document.addEventListener('click',function(event){if(!menu.contains(event.target)&&!button.contains(event.target))closeMenu()});document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeMenu();button.focus()}})})();</script>
 
+
+<!-- Sélecteur de langues Le Cocon Bien-Être -->
+<style>
+#cocon-language-bar{position:fixed;top:10px;right:12px;z-index:99999;display:flex;align-items:center;gap:5px;padding:6px 8px;background:rgba(37,44,45,.96);border:1px solid #c6a064;border-radius:12px;box-shadow:0 3px 14px rgba(0,0,0,.22)}
+#cocon-language-bar button{font:inherit;font-size:18px;line-height:1;padding:5px 6px;border:1px solid transparent;border-radius:7px;background:transparent;cursor:pointer}
+#cocon-language-bar button[aria-pressed="true"]{border-color:#dfbd7d;background:#494336}
+#cocon-language-bar button:focus-visible{outline:2px solid #dfbd7d;outline-offset:2px}
+#google_translate_element{position:fixed!important;left:-9999px!important;top:-9999px!important}
+.goog-te-banner-frame,.skiptranslate iframe{display:none!important}
+body{top:0!important}
+@media(max-width:600px){#cocon-language-bar{top:8px;right:8px;gap:2px;padding:4px 5px}#cocon-language-bar button{font-size:16px;padding:5px 4px}}
+</style>
+<nav id="cocon-language-bar" aria-label="Choisir la langue">
+<button type="button" data-lang="fr" aria-label="Français" title="Français" aria-pressed="true">🇫🇷</button>
+<button type="button" data-lang="en" aria-label="English" title="English" aria-pressed="false">🇬🇧</button>
+<button type="button" data-lang="es" aria-label="Español" title="Español" aria-pressed="false">🇪🇸</button>
+<button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false">🇩🇪</button>
+<button type="button" data-lang="it" aria-label="Italiano" title="Italiano" aria-pressed="false">🇮🇹</button>
+</nav>
+<div id="google_translate_element" aria-hidden="true"></div>
+<script>
+(function(){
+  var bar=document.getElementById('cocon-language-bar');
+  if(!bar || bar.dataset.ready) return;
+  bar.dataset.ready='1';
+  var langNames={fr:'Français',en:'English',es:'Español',de:'Deutsch',it:'Italiano'};
+  function updateButtons(lang){
+    bar.querySelectorAll('button[data-lang]').forEach(function(b){
+      b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');
+    });
+  }
+  window.googleTranslateElementInit=function(){
+    if(window.google && google.translate && google.translate.TranslateElement){
+      new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,en,es,de,it',autoDisplay:false},'google_translate_element');
+    }
+  };
+  function setLanguage(lang){
+    updateButtons(lang);
+    if(lang==='fr'){
+      var cookieParts=document.cookie.split(';');
+      cookieParts.forEach(function(part){
+        var name=part.trim().split('=')[0];
+        if(name.indexOf('googtrans')!==-1){
+          document.cookie=name+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+          document.cookie=name+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain='+location.hostname;
+        }
+      });
+      try{localStorage.removeItem('googtrans')}catch(e){}
+      location.reload();
+      return;
+    }
+    var tries=0;
+    var timer=setInterval(function(){
+      var select=document.querySelector('.goog-te-combo');
+      if(select){
+        clearInterval(timer);
+        select.value=lang;
+        select.dispatchEvent(new Event('change',{bubbles:true}));
+      } else if(++tries>30){
+        clearInterval(timer);
+        alert('La traduction est momentanément indisponible. Vérifiez votre connexion puis réessayez.');
+      }
+    },250);
+  }
+  bar.querySelectorAll('button[data-lang]').forEach(function(b){
+    b.addEventListener('click',function(){setLanguage(b.dataset.lang)});
+  });
+  try{
+    var cookie=document.cookie.split(';').map(function(s){return s.trim()}).find(function(s){return s.indexOf('googtrans=')===0});
+    if(cookie){var m=cookie.match(/\/fr\/([a-z]{2})/);if(m)updateButtons(m[1]);}
+  }catch(e){}
+})();
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+
 </body>
 </html>
