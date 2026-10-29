@@ -11,41 +11,8 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ivory);font-family:Arial,Helvetica,sans-serif;line-height:1.65}a{color:var(--gold)}.top{position:sticky;top:0;z-index:5;background:#202121f5;border-bottom:1px solid var(--gold2);padding:14px 20px}.top-inner{max-width:1080px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{text-decoration:none;color:var(--gold);font-weight:700;letter-spacing:2px;font-size:20px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.5px}.back{border:1px solid var(--gold);border-radius:7px;padding:8px 12px;text-decoration:none;color:var(--ivory);font-size:14px}.wrap{max-width:1080px;margin:auto;padding:36px 20px 56px}.eyebrow{text-transform:uppercase;letter-spacing:3px;color:var(--gold);font-size:12px}h1,h2{font-family:Georgia,serif;color:var(--gold);line-height:1.2}h1{font-size:clamp(30px,5vw,46px);margin:8px 0 14px}h2{font-size:27px}.lead{max-width:760px;color:var(--muted);font-size:17px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}.card{background:var(--panel);border:1px solid var(--gold2);border-radius:14px;padding:22px;box-shadow:0 0 0 1px #d8b97822}.address{font-size:19px;color:var(--ivory);font-weight:700}.btn{display:inline-block;margin-top:12px;background:var(--gold);color:#222;text-decoration:none;font-weight:700;padding:12px 17px;border-radius:8px}.map{width:100%;height:330px;border:1px solid var(--gold2);border-radius:10px;background:#fff}.schematic{margin-top:22px;padding:18px;background:#252626;border:1px solid var(--gold2);border-radius:12px}.route{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}.stop{min-width:130px;text-align:center;padding:12px 10px;border:1px solid var(--gold);border-radius:10px;background:#303131}.stop strong{display:block;color:var(--gold)}.arrow{color:var(--gold);font-size:25px}.note{color:var(--muted);font-size:13px;margin-bottom:0}.footer{text-align:center;border-top:1px solid #8d7445;padding:22px;color:var(--muted);font-size:13px}.footer a{margin:0 8px}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.map{height:290px}.wrap{padding:27px 15px 40px}.top-inner{align-items:flex-start}}
 </style>
-
-<style id="cocon-language-switcher-style">
-#cocon-language-switcher{position:fixed;z-index:9999;top:6px;left:50%;right:auto;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:6px 8px;background:rgba(37,44,45,.97);border:1px solid #c7a86a;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25);font-family:Arial,sans-serif}
-#cocon-language-switcher button{border:1px solid transparent;background:transparent;border-radius:999px;padding:4px 5px;font-size:20px;line-height:1;cursor:pointer}
-#cocon-language-switcher button:hover,#cocon-language-switcher button:focus-visible,#cocon-language-switcher button[aria-pressed="true"]{border-color:#dfbd7d;background:#494336;outline:none}
-#cocon-language-switcher .lang-code{display:block;color:#fff;font-size:9px;letter-spacing:.04em;margin-top:3px}
-#google_translate_element{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important}
-.goog-te-banner-frame.skiptranslate{display:none!important}body{top:0!important}.goog-te-gadget{font-size:0!important} .goog-logo-link{display:none!important}
-@media(max-width:520px){#cocon-language-switcher{top:34px;left:50%;right:auto;transform:translateX(-50%);gap:2px;padding:4px 5px}#cocon-language-switcher button{font-size:17px;padding:4px 3px}}
-</style>
 </head>
 <body>
-<div id="cocon-language-switcher" aria-label="Choisir la langue du site">
-<button type="button" data-lang="fr" aria-label="Français" aria-pressed="true">🇫🇷<span class="lang-code">FR</span></button>
-<button type="button" data-lang="en" aria-label="English" aria-pressed="false">🇬🇧<span class="lang-code">EN</span></button>
-<button type="button" data-lang="es" aria-label="Español" aria-pressed="false">🇪🇸<span class="lang-code">ES</span></button>
-<button type="button" data-lang="de" aria-label="Deutsch" aria-pressed="false">🇩🇪<span class="lang-code">DE</span></button>
-<button type="button" data-lang="it" aria-label="Italiano" aria-pressed="false">🇮🇹<span class="lang-code">IT</span></button>
-</div><div id="google_translate_element" aria-hidden="true"></div>
-<script>
-(function(){
- var root=document.getElementById('cocon-language-switcher'); if(!root)return;
- function setPressed(lang){root.querySelectorAll('button[data-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-lang')===lang?'true':'false')})}
- function setLang(lang){
-   if(lang==='fr'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain='+location.hostname;try{localStorage.removeItem('googtrans')}catch(e){};setPressed('fr');location.reload();return;}
-   document.cookie='googtrans=/fr/'+lang+'; path=/';document.cookie='googtrans=/fr/'+lang+'; path=/; domain='+location.hostname;
-   setPressed(lang);location.reload();
- }
- root.querySelectorAll('button[data-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))})});
- var match=document.cookie.match(/(?:^|;\s*)googtrans=\/fr\/(en|es|de|it)/);setPressed(match?match[1]:'fr');
- window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it',autoDisplay:false},'google_translate_element');};
- var script=document.createElement('script');script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';script.async=true;document.head.appendChild(script);
-})();
-</script>
-
 <header class="top"><div class="top-inner"><a class="brand" href="./index.html">LE COCON<small>BIEN-ÊTRE · PONT-L’ÉVÊQUE</small></a><a class="back" href="./index.html">← Retour à l’accueil</a></div></header>
 <main class="wrap">
 <div class="eyebrow">Nous trouver</div><h1>Votre rendez-vous au Cocon Bien-Être</h1>
@@ -57,4 +24,80 @@
 <section class="schematic"><h2>Petit repère pour vous orienter</h2><p>Ce schéma est volontairement simplifié : il sert à retenir l’adresse, pas à remplacer une carte routière.</p><div class="route" aria-label="Schéma simplifié : Pont-l’Évêque, rue Ménars, Le Cocon"><div class="stop"><strong>Pont-l’Évêque</strong><span>Centre-ville</span></div><span class="arrow" aria-hidden="true">→</span><div class="stop"><strong>Rue Ménars</strong><span>12 rue Ménars</span></div><span class="arrow" aria-hidden="true">→</span><div class="stop"><strong>Le Cocon</strong><span>Votre rendez-vous</span></div></div><p class="note">Pour les derniers mètres, suivez l’adresse exacte dans Google Maps plutôt que ce schéma indicatif.</p></section>
 <section class="card" style="margin-top:22px"><h2>Prendre rendez-vous</h2><p>Vous souhaitez consulter les prestations, les tarifs ou les disponibilités avant de venir ? Retrouvez le salon sur Planity.</p><a class="btn" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer">Voir les prestations et réserver ↗</a></section>
 </main><footer class="footer">Le Cocon Bien-Être · 12 rue Ménars, 14130 Pont-l’Évêque<br><a href="./index.html">Accueil</a><a href="./mentions-legales.html">Mentions légales</a><a href="./politique-confidentialite.html">Confidentialité</a></footer>
+
+<style>
+/* Sélecteur de langues : centré, sans afficher la barre Google */
+#cocon-language-switcher{position:fixed;z-index:9998;top:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:7px;padding:6px 10px;background:rgba(37,44,45,.96);border:1px solid #c6a064;border-radius:999px;box-shadow:0 3px 12px #0004;line-height:1}
+#cocon-language-switcher button{border:0;background:transparent;padding:2px;cursor:pointer;font:24px/1 Arial,sans-serif;border-radius:50%;filter:saturate(.95)}
+#cocon-language-switcher button:hover,#cocon-language-switcher button:focus-visible{outline:2px solid #dfbd7d;outline-offset:2px}
+#cocon-language-switcher button[aria-pressed="true"]{box-shadow:0 0 0 2px #dfbd7d}
+.goog-te-banner-frame,.goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon,.goog-te-balloon-frame{display:none!important}
+body{top:0!important}
+html{margin-top:0!important}
+body > .skiptranslate{display:none!important}
+@media(max-width:600px){#cocon-language-switcher{top:7px;gap:4px;padding:5px 7px}#cocon-language-switcher button{font-size:21px}}
+</style>
+<div id="cocon-language-switcher" aria-label="Choisir la langue">
+<button type="button" data-lang="fr" aria-label="Français" title="Français" aria-pressed="true">🇫🇷</button>
+<button type="button" data-lang="en" aria-label="English" title="English" aria-pressed="false">🇬🇧</button>
+<button type="button" data-lang="es" aria-label="Español" title="Español" aria-pressed="false">🇪🇸</button>
+<button type="button" data-lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false">🇩🇪</button>
+<button type="button" data-lang="it" aria-label="Italiano" title="Italiano" aria-pressed="false">🇮🇹</button>
+</div>
+<div id="google_translate_element" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);"></div>
+<script>
+(function(){
+  var languages=['fr','en','es','de','it'];
+  function setPressed(lang){
+    document.querySelectorAll('#cocon-language-switcher button').forEach(function(b){
+      b.setAttribute('aria-pressed',b.getAttribute('data-lang')===lang?'true':'false');
+    });
+  }
+  function changeLanguage(lang){
+    if(!languages.includes(lang)) return;
+    setPressed(lang);
+    var combo=document.querySelector('.goog-te-combo');
+    if(lang==='fr'){
+      // Google Translate resets to the source language when available.
+      document.cookie='googtrans=/fr/fr; path=/';
+      document.cookie='googtrans=/fr/fr; path=/; domain='+location.hostname;
+      location.reload();
+      return;
+    }
+    if(combo){
+      combo.value=lang;
+      combo.dispatchEvent(new Event('change',{bubbles:true}));
+    } else {
+      // Preserve choice while Google's widget initializes.
+      sessionStorage.setItem('cocon-lang-pending',lang);
+      if(!document.querySelector('script[data-cocon-google-translate]')){
+        loadGoogleTranslate();
+      }
+    }
+  }
+  window.coconGoogleTranslateInit=function(){
+    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it',autoDisplay:false,layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');
+    var pending=sessionStorage.getItem('cocon-lang-pending');
+    if(pending){
+      var tries=0, timer=setInterval(function(){
+        var combo=document.querySelector('.goog-te-combo');
+        if(combo){clearInterval(timer);sessionStorage.removeItem('cocon-lang-pending');combo.value=pending;combo.dispatchEvent(new Event('change',{bubbles:true}));}
+        else if(++tries>40){clearInterval(timer);}
+      },250);
+    }
+  };
+  function loadGoogleTranslate(){
+    if(document.querySelector('script[data-cocon-google-translate]')) return;
+    var script=document.createElement('script');script.dataset.coconGoogleTranslate='1';
+    script.src='https://translate.google.com/translate_a/element.js?cb=coconGoogleTranslateInit';
+    document.head.appendChild(script);
+  }
+  document.querySelectorAll('#cocon-language-switcher button').forEach(function(b){
+    b.addEventListener('click',function(){changeLanguage(b.getAttribute('data-lang'));});
+  });
+  // Auto-load widget on every page, including the homepage.
+  loadGoogleTranslate();
+})();
+</script>
+
 </body></html>
