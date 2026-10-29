@@ -17,8 +17,30 @@ a{color:#9b804c}
 #cocon-language-switcher button:hover,#cocon-language-switcher button:focus-visible,#cocon-language-switcher button[aria-pressed="true"]{border-color:#dfbd7d;background:#494336;outline:none}
 #cocon-language-switcher .lang-code{display:block;color:#fff;font-size:9px;letter-spacing:.04em;margin-top:3px}
 #google_translate_element{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important}
-.goog-te-banner-frame,.goog-te-banner-frame.skiptranslate,iframe.goog-te-banner-frame{display:none!important;visibility:hidden!important;height:0!important;width:0!important}body{top:0!important;position:static!important}html{margin-top:0!important}#goog-gt-tt,.goog-te-balloon-frame,.skiptranslate iframe{display:none!important;visibility:hidden!important}.goog-te-gadget{font-size:0!important} .goog-logo-link{display:none!important}
+html body{top:0!important;margin-top:0!important}
+.goog-te-banner-frame,.goog-te-banner-frame.skiptranslate,iframe.goog-te-banner-frame,.goog-te-balloon-frame{display:none!important;visibility:hidden!important;height:0!important;width:0!important;border:0!important}
+body > .skiptranslate{display:none!important;height:0!important;visibility:hidden!important}
+#google_translate_element{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.goog-te-gadget{font-size:0!important}.goog-logo-link{display:none!important} .goog-te-gadget span{display:none!important}
 @media(max-width:520px){#cocon-language-switcher{top:34px;left:50%;right:auto;transform:translateX(-50%);gap:2px;padding:4px 5px}#cocon-language-switcher button{font-size:17px;padding:4px 3px}}
+
+/* Correctif mobile : sélecteur compact en haut, sans recouvrir le logo ni le menu */
+@media (max-width: 600px){
+  #cocon-language-switcher{
+    top: max(4px, env(safe-area-inset-top));
+    left:50%; right:auto; transform:translateX(-50%);
+    display:flex; flex-wrap:nowrap; gap:1px;
+    width:max-content; max-width:calc(100vw - 18px);
+    padding:3px 5px; border-radius:999px;
+  }
+  #cocon-language-switcher button{
+    flex:0 0 auto; min-width:27px; padding:3px 3px;
+    font-size:16px; line-height:1; border-radius:999px;
+  }
+  #cocon-language-switcher .lang-code{display:none}
+  .goog-te-banner-frame,.goog-te-banner-frame.skiptranslate,iframe.goog-te-banner-frame{display:none!important}
+  html,body{top:0!important;margin-top:0!important}
+}
 </style>
 </head>
 <body>
