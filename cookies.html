@@ -12,13 +12,13 @@ a{color:#9b804c}
 </style>
 
 <style id="cocon-language-switcher-style">
-#cocon-language-switcher{position:fixed;z-index:9999;top:82px;right:14px;display:flex;align-items:center;gap:5px;padding:6px 8px;background:rgba(37,44,45,.97);border:1px solid #c7a86a;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25);font-family:Arial,sans-serif}
+#cocon-language-switcher{position:fixed;z-index:9999;top:6px;left:50%;right:auto;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:6px 8px;background:rgba(37,44,45,.97);border:1px solid #c7a86a;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25);font-family:Arial,sans-serif}
 #cocon-language-switcher button{border:1px solid transparent;background:transparent;border-radius:999px;padding:4px 5px;font-size:20px;line-height:1;cursor:pointer}
 #cocon-language-switcher button:hover,#cocon-language-switcher button:focus-visible,#cocon-language-switcher button[aria-pressed="true"]{border-color:#dfbd7d;background:#494336;outline:none}
 #cocon-language-switcher .lang-code{display:block;color:#fff;font-size:9px;letter-spacing:.04em;margin-top:3px}
 #google_translate_element{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .goog-te-banner-frame.skiptranslate{display:none!important}body{top:0!important}.goog-te-gadget{font-size:0!important} .goog-logo-link{display:none!important}
-@media(max-width:520px){#cocon-language-switcher{top:76px;right:8px;gap:2px;padding:4px 5px}#cocon-language-switcher button{font-size:17px;padding:4px 3px}}
+@media(max-width:520px){#cocon-language-switcher{top:34px;left:50%;right:auto;transform:translateX(-50%);gap:2px;padding:4px 5px}#cocon-language-switcher button{font-size:17px;padding:4px 3px}}
 </style>
 </head>
 <body>
@@ -40,7 +40,7 @@ a{color:#9b804c}
  }
  root.querySelectorAll('button[data-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))})});
  var match=document.cookie.match(/(?:^|;\s*)googtrans=\/fr\/(en|es|de|it)/);setPressed(match?match[1]:'fr');
- window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,fr,es,de,it',autoDisplay:false},'google_translate_element');};
+ window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it',autoDisplay:false},'google_translate_element');};
  var script=document.createElement('script');script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';script.async=true;document.head.appendChild(script);
 })();
 </script>
