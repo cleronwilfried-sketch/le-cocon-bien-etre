@@ -13,3 +13,16 @@ Publication sur Cloudflare Pages :
 IMPORTANT — galerie :
 Cette version ajoute la présentation de la galerie, mais elle n'a pas encore de véritable espace privé d'importation. Pour que vous puissiez ajouter vous-même des photos et qu'elles soient visibles par tous les clients, il faut connecter un stockage en ligne. Je ne l'ai pas activé automatiquement, afin de ne pas créer de compte ni d'éventuelle facturation à votre place. Nous pouvons ensuite configurer ensemble une solution gratuite et vérifier ses limites.
 Ne modifiez pas les DNS et ne touchez pas aux enregistrements e-mail.
+
+
+LANGUES DE L’IMAGE D’ACCUEIL — préparation technique
+Le sélecteur de langue peut maintenant charger un visuel distinct selon le drapeau :
+- Français : maquette.png
+- Anglais : maquette-en.png
+- Espagnol : maquette-es.png
+- Allemand : maquette-de.png
+- Italien : maquette-it.png
+- Néerlandais : maquette-nl.png
+- Russe : maquette-ru.png
+
+Les six fichiers traduits ne sont pas encore fournis dans cette archive : tant qu’ils ne sont pas créés et ajoutés, le site affiche automatiquement maquette.png en remplacement. Les zones cliquables restent en place. Il faut préparer les six visuels traduits avant de publier pour que l’image change réellement de langue.
