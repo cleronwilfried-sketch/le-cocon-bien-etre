@@ -80,6 +80,7 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
 <button type="button" data-lang="de" aria-label="Deutsch" aria-pressed="false">🇩🇪<span class="lang-code">DE</span></button>
 <button type="button" data-lang="it" aria-label="Italiano" aria-pressed="false">🇮🇹<span class="lang-code">IT</span></button>
 <button type="button" data-lang="nl" aria-label="Nederlands" aria-pressed="false">🇳🇱<span class="lang-code">NL</span></button>
+<button type="button" data-lang="ru" aria-label="Русский" aria-pressed="false">🇷🇺<span class="lang-code">RU</span></button>
 </div><div id="google_translate_element" aria-hidden="true"></div>
 <script>
 (function(){
@@ -102,7 +103,7 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
    try{localStorage.removeItem('googtrans')}catch(e){}
  }
  function setLang(lang){
-   if(!['fr','en','es','de','it','nl'].includes(lang)) return;
+   if(!['fr','en','es','de','it','nl','ru'].includes(lang)) return;
    clearTranslateCookies();
    if(lang!=='fr'){
      writeCookie('googtrans','/fr/'+lang);
@@ -115,13 +116,13 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
  }
  root.querySelectorAll('button[data-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))})});
  function currentLang(){
-   var match=document.cookie.match(/(?:^|;\s*)googtrans=\/fr\/(en|es|de|it|nl)/);
+   var match=document.cookie.match(/(?:^|;\s*)googtrans=\/fr\/(en|es|de|it|nl|ru)/);
    if(match)return match[1];
    try{var stored=localStorage.getItem('cocon-lang');if(stored)return stored}catch(e){}
    return 'fr';
  }
  var selected=currentLang();setPressed(selected);
- window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it,nl',autoDisplay:false},'google_translate_element');};
+ window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'en,es,de,it,nl,ru',autoDisplay:false},'google_translate_element');};
  var script=document.createElement('script');script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';script.async=true;document.head.appendChild(script);
 })();
 </script>
