@@ -226,9 +226,9 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
     var poster = document.getElementById('cocon-main-poster');
     if (!root) return;
     var posterFiles = {
-      fr: './maquette.png', en: './maquette-en.png', es: './maquette-es.png',
-      de: './maquette-de.png', it: './maquette-it.png', nl: './maquette-nl.png',
-      ru: './maquette-ru.png'
+      fr: './maquette.png?v=20261030', en: './maquette-en.png?v=20261030', es: './maquette-es.png?v=20261030',
+      de: './maquette-de.png?v=20261030', it: './maquette-it.png?v=20261030', nl: './maquette-nl.png?v=20261030',
+      ru: './maquette-ru.png?v=20261030'
     };
     var posterLabels = {
       fr: 'Affiche du Cocon Bien-Être en français.',
@@ -261,14 +261,9 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
       });
     });
 
-    var initial = 'fr';
-    try { initial = localStorage.getItem('cocon-poster-lang') || 'fr'; } catch(e) {}
-    if (initial === 'fr') {
-      // Le français est le HTML d'origine : ne charge pas Google Traduction.
-      setLang('fr');
-    } else {
-      setLang(initial);
-    }
+    // À chaque nouvelle ouverture/rechargement, le site démarre en français.
+    // Les autres langues sont activées uniquement après un clic sur leur drapeau.
+    setLang('fr');
   });
 })();
 </script>
@@ -302,7 +297,7 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
   </nav>
 </header>
 <main id="contenu">
-<section class="poster" aria-label="Présentation du Cocon Bien-Être"><img id="cocon-main-poster" src="./maquette.png" alt="Affiche du Cocon Bien-Être en français.">
+<section class="poster" aria-label="Présentation du Cocon Bien-Être"><img id="cocon-main-poster" src="./maquette.png?v=20261030" alt="Affiche du Cocon Bien-Être en français.">
 <a class="hotspot planity-services" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Voir les prestations sur Planity"></a><a class="hotspot planity-tarifs" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Voir les tarifs sur Planity"></a><a class="hotspot planity-review" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Avis Planity"></a><a class="hotspot google-review" href="https://www.google.com/search?q=Le+Cocon+Bien-%C3%AAtre+12+Rue+M%C3%A9nars+Pont-l%27%C3%89v%C3%AAque+avis" target="_blank" rel="noopener noreferrer" aria-label="Avis Google"></a><a class="hotspot address-map" href="https://www.google.com/maps/search/?api=1&amp;query=12+Rue+M%C3%A9nars%2C+14130+Pont-l%27%C3%89v%C3%AAque" target="_blank" rel="noopener noreferrer" aria-label="Adresse du salon dans Google Maps"></a>
 <a class="hotspot phone" href="tel:+33259163936" aria-label="Appeler le salon"></a><a class="hotspot instagram" href="https://www.instagram.com/lecocon.bienetre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram du Cocon"></a><a class="hotspot facebook" href="https://www.facebook.com/lecoconpontleveque/" target="_blank" rel="noopener noreferrer" aria-label="Facebook du Cocon"></a><a class="hotspot planity-booking" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer" aria-label="Prendre rendez-vous sur Planity"></a></section>
 <section class="services" id="about" aria-labelledby="services-title"><div class="services-inner"><div class="eyebrow">Votre parenthèse de douceur</div><h1 id="services-title">Le Cocon Bien-Être à Pont-l’Évêque</h1><p class="intro">Bienvenue au Cocon Bien-Être, un espace dédié à la détente et au lâcher-prise à Pont-l’Évêque, dans le Calvados. Découvrez nos soins et choisissez le moment de bien-être qui vous ressemble.</p><div class="service-grid">
