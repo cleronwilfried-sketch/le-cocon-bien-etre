@@ -172,14 +172,19 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
     document.head.appendChild(script);
   }
   function clearGoogleTranslateState(){
-    // Efface les cookies Google Translate (tous les chemins/domaines usuels).
+    // Supprime les cookies Google Translate sur les variantes courantes du domaine.
     var host = location.hostname;
     var domains = ['', host, '.' + host];
+    if (host.indexOf('www.') === 0) {
+      var base = host.substring(4);
+      domains.push(base, '.' + base);
+    }
+    domains = Array.from(new Set(domains));
     var paths = ['/', location.pathname || '/'];
     domains.forEach(function(domain){
       paths.forEach(function(path){
-        var base = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=' + path;
-        document.cookie = base + (domain ? '; domain=' + domain : '');
+        var cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0; path=' + path;
+        document.cookie = cookie + (domain ? '; domain=' + domain : '');
       });
     });
     try { localStorage.removeItem('googtrans'); } catch(e) {}
@@ -187,28 +192,21 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
   function forceFrench(){
     try { localStorage.setItem('cocon-poster-lang','fr'); } catch(e) {}
     clearGoogleTranslateState();
-    // Le cookie /fr/fr indique explicitement la langue d'origine et empêche
-    // Google Translate de réappliquer la langue précédente après le clic.
-    document.cookie = 'googtrans=/fr/fr; path=/';
-    document.cookie = 'googtrans=/fr/fr; path=/; domain=' + location.hostname;
-    document.cookie = 'googtrans=/fr/fr; path=/; domain=.' + location.hostname;
-    // Les traductions Google modifient directement le DOM : un rechargement
-    // complet est nécessaire pour restaurer le HTML français d'origine.
-    location.reload();
+    // Recharge le HTML français d'origine sans réactiver Google Traduction.
+    var url = new URL(window.location.href);
+    url.searchParams.set('cocon-lang', 'fr');
+    url.searchParams.set('refresh', String(Date.now()));
+    window.location.replace(url.toString());
   }
   function applyGoogleLanguage(lang){
     var combo=document.querySelector('.goog-te-combo');
-    if(lang==='fr'){
-      forceFrench();
-      return;
-    }
+    if(lang==='fr'){ return; }
     if(combo){combo.value=lang;combo.dispatchEvent(new Event('change'));}
   }
   document.addEventListener('DOMContentLoaded',function(){
     var root=document.getElementById('cocon-language-switcher');
     var poster=document.getElementById('cocon-main-poster');
     if(!root) return;
-    loadGoogleTranslate();
     function setLang(lang){
       if(!['fr','en','es','de','it','nl','ru'].includes(lang)) lang='fr';
       if(poster){
@@ -240,6 +238,10 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
         button.title=label;
       });
       try{localStorage.setItem('cocon-poster-lang',lang);}catch(e){}
+      // En français, le HTML original est déjà dans la bonne langue :
+      // ne charge pas Google Translate, sinon il pourrait réappliquer l'ancienne langue.
+      if(lang === 'fr') return;
+      loadGoogleTranslate();
       // Google Translate s'initialise de façon asynchrone : réessaie brièvement
       // sans bloquer la page si le service n'est pas disponible.
       var attempts=0;
