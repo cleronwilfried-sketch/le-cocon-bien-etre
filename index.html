@@ -157,118 +157,118 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
 </div><div id="google_translate_element" aria-hidden="true"></div>
 <script>
 (function(){
-  var translateReady = false;
+  var pendingLanguage = 'en';
+  var translateScriptRequested = false;
   window.googleTranslateElementInit = function(){
-    if (!window.google || !google.translate) return;
-    new google.translate.TranslateElement({pageLanguage:'fr', includedLanguages:'fr,en,es,de,it,nl,ru', autoDisplay:false}, 'google_translate_element');
-    translateReady = true;
+    if (!window.google || !window.google.translate) return;
+    new google.translate.TranslateElement({
+      pageLanguage: 'fr',
+      includedLanguages: 'en,es,de,it,nl,ru',
+      autoDisplay: false
+    }, 'google_translate_element');
   };
+
   function loadGoogleTranslate(){
-    if (document.getElementById('google-translate-loader')) return;
-    var script=document.createElement('script');
-    script.id='google-translate-loader';
-    script.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    script.async=true;
+    if (translateScriptRequested || document.getElementById('google-translate-loader')) return;
+    translateScriptRequested = true;
+    var script = document.createElement('script');
+    script.id = 'google-translate-loader';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    script.onerror = function(){ translateScriptRequested = false; };
     document.head.appendChild(script);
   }
-  function clearGoogleTranslateState(){
-    // Supprime les cookies Google Translate sur les variantes courantes du domaine.
+
+  function clearGoogleTranslateCookies(){
     var host = location.hostname;
     var domains = ['', host, '.' + host];
     if (host.indexOf('www.') === 0) {
       var base = host.substring(4);
       domains.push(base, '.' + base);
     }
-    domains = Array.from(new Set(domains));
     var paths = ['/', location.pathname || '/'];
-    domains.forEach(function(domain){
+    Array.from(new Set(domains)).forEach(function(domain){
       paths.forEach(function(path){
         var cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0; path=' + path;
         document.cookie = cookie + (domain ? '; domain=' + domain : '');
       });
     });
-    try { localStorage.removeItem('googtrans'); } catch(e) {}
   }
+
   function forceFrench(){
-    try { localStorage.setItem('cocon-poster-lang','fr'); } catch(e) {}
-    clearGoogleTranslateState();
-    // Recharge le HTML français d'origine sans réactiver Google Traduction.
+    try { localStorage.setItem('cocon-poster-lang', 'fr'); } catch(e) {}
+    clearGoogleTranslateCookies();
     var url = new URL(window.location.href);
     url.searchParams.set('cocon-lang', 'fr');
     url.searchParams.set('refresh', String(Date.now()));
     window.location.replace(url.toString());
   }
-  function applyGoogleLanguage(lang){
-    var combo=document.querySelector('.goog-te-combo');
-    if(lang==='fr'){ return; }
-    if(combo){combo.value=lang;combo.dispatchEvent(new Event('change'));}
+
+  function chooseGoogleLanguage(lang){
+    pendingLanguage = lang;
+    loadGoogleTranslate();
+    var attempts = 0;
+    var timer = window.setInterval(function(){
+      attempts++;
+      var combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        window.clearInterval(timer);
+        combo.value = pendingLanguage;
+        combo.dispatchEvent(new Event('change', { bubbles: true }));
+      } else if (attempts >= 60) {
+        window.clearInterval(timer);
+      }
+    }, 250);
   }
-  document.addEventListener('DOMContentLoaded',function(){
-    var root=document.getElementById('cocon-language-switcher');
-    var poster=document.getElementById('cocon-main-poster');
-    if(!root) return;
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var root = document.getElementById('cocon-language-switcher');
+    var poster = document.getElementById('cocon-main-poster');
+    if (!root) return;
+    var posterFiles = {
+      fr: './maquette.png', en: './maquette-en.png', es: './maquette-es.png',
+      de: './maquette-de.png', it: './maquette-it.png', nl: './maquette-nl.png',
+      ru: './maquette-ru.png'
+    };
+    var posterLabels = {
+      fr: 'Affiche du Cocon Bien-Être en français.',
+      en: 'Le Cocon Well-being poster in English.',
+      es: 'Cartel de Le Cocon Bienestar en español.',
+      de: 'Plakat von Le Cocon Wellnesszentrum auf Deutsch.',
+      it: 'Locandina di Le Cocon Benessere in italiano.',
+      nl: 'Poster van Le Cocon Welzijn in het Nederlands.',
+      ru: 'Плакат Le Cocon на русском языке.'
+    };
+
     function setLang(lang){
-      if(!['fr','en','es','de','it','nl','ru'].includes(lang)) lang='fr';
-      if(poster){
-        // Chaque drapeau affiche la maquette fournie dans la langue correspondante.
-        var posterFiles = {
-          fr: './maquette.png',
-          en: './maquette-en.png',
-          es: './maquette-es.png',
-          de: './maquette-de.png',
-          it: './maquette-it.png',
-          nl: './maquette-nl.png',
-          ru: './maquette-ru.png'
-        };
-        var posterLabels = {
-          fr: 'Affiche du Cocon Bien-Être en français.',
-          en: 'Le Cocon Well-being poster in English.',
-          es: 'Cartel de Le Cocon Bienestar en español.',
-          de: 'Plakat von Le Cocon Wellnesszentrum auf Deutsch.',
-          it: 'Locandina di Le Cocon Benessere in italiano.',
-          nl: 'Poster van Le Cocon Welzijn in het Nederlands.',
-          ru: 'Плакат Le Cocon на русском языке.'
-        };
-        poster.src = posterFiles[lang] || posterFiles.fr;
-        poster.alt = posterLabels[lang] || posterLabels.fr;
+      if (!Object.prototype.hasOwnProperty.call(posterFiles, lang)) lang = 'fr';
+      if (poster) {
+        poster.src = posterFiles[lang];
+        poster.alt = posterLabels[lang];
       }
       root.querySelectorAll('button[data-lang]').forEach(function(button){
-        button.setAttribute('aria-pressed',button.getAttribute('data-lang')===lang?'true':'false');
-        var label=button.getAttribute('aria-label')||button.title||lang;
-        button.title=label;
+        button.setAttribute('aria-pressed', button.getAttribute('data-lang') === lang ? 'true' : 'false');
       });
-      try{localStorage.setItem('cocon-poster-lang',lang);}catch(e){}
-      // En français, le HTML original est déjà dans la bonne langue :
-      // ne charge pas Google Translate, sinon il pourrait réappliquer l'ancienne langue.
-      if(lang === 'fr') return;
-      loadGoogleTranslate();
-      // Google Translate s'initialise de façon asynchrone : réessaie brièvement
-      // sans bloquer la page si le service n'est pas disponible.
-      var attempts=0;
-      var timer=setInterval(function(){
-        attempts++;
-        var combo=document.querySelector('.goog-te-combo');
-        if(combo){clearInterval(timer);applyGoogleLanguage(lang);}
-        else if(attempts>=20){clearInterval(timer);}
-      },250);
+      try { localStorage.setItem('cocon-poster-lang', lang); } catch(e) {}
+      if (lang !== 'fr') chooseGoogleLanguage(lang);
     }
+
     root.querySelectorAll('button[data-lang]').forEach(function(button){
-      button.addEventListener('click',function(){
+      button.addEventListener('click', function(){
         var lang = button.getAttribute('data-lang') || 'fr';
-        if(lang === 'fr'){
-          forceFrench();
-          return;
-        }
-        setLang(lang);
-      });
-          return;
-        }
+        if (lang === 'fr') { forceFrench(); return; }
         setLang(lang);
       });
     });
-    var initial='fr';
-    try{initial=localStorage.getItem('cocon-poster-lang')||'fr';}catch(e){}
-    setLang(initial);
+
+    var initial = 'fr';
+    try { initial = localStorage.getItem('cocon-poster-lang') || 'fr'; } catch(e) {}
+    if (initial === 'fr') {
+      // Le français est le HTML d'origine : ne charge pas Google Traduction.
+      setLang('fr');
+    } else {
+      setLang(initial);
+    }
   });
 })();
 </script>
