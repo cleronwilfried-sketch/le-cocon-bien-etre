@@ -146,7 +146,22 @@ body > .skiptranslate{display:none!important;height:0!important;visibility:hidde
   html,body{top:0!important;margin-top:0!important}
 }
 </style>
-</head>
+<style>
+/* Aperçu de refonte — branche isolée */
+body{background:#303839}
+.poster{box-shadow:0 20px 75px rgba(0,0,0,.28)}
+.services{padding-top:85px;padding-bottom:90px}
+.services-inner{max-width:1160px}
+.services h1,.gallery h2,.area-section h2{font-size:clamp(34px,4.2vw,56px);letter-spacing:.025em}
+.service-grid{gap:24px;margin-top:44px}
+.service-card{min-height:220px;border:1px solid rgba(223,189,125,.55);border-radius:4px;padding:32px 28px;background:linear-gradient(155deg,#3d4544,#2d3535)}
+.service-card h3{font-size:24px;margin-bottom:20px}
+.gallery{padding-top:85px;padding-bottom:90px}
+.tiles{width:min(1160px,100%);gap:18px}
+.tile{border-radius:3px;border:1px solid rgba(223,189,125,.5)}
+.booking-button{border-radius:3px;padding:17px 34px;letter-spacing:.09em;text-transform:uppercase}
+@media(max-width:760px){.services,.gallery{padding:55px 17px}.service-grid{gap:13px}.service-card{padding:22px 18px;min-height:0}.service-card h3{font-size:20px}.tiles{gap:9px}}
+</style></head>
 <body>
 <div id="cocon-language-switcher" aria-label="Choisir la langue de l’affiche">
 <button type="button" data-lang="fr" aria-label="Français" aria-pressed="true" title="Français">🇫🇷<span class="lang-code">FR</span></button>
