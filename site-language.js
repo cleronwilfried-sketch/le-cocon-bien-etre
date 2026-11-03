@@ -7,10 +7,10 @@
   }
   var lang = 'fr';
   try {
-    var saved = localStorage.getItem('cocon-lang');
+    var saved = sessionStorage.getItem('cocon-lang');
     if (supported.indexOf(saved) !== -1) lang = saved;
-    else lang = cookieLang() || 'fr';
-  } catch (e) { lang = cookieLang() || 'fr'; }
+    else lang = 'fr';
+  } catch (e) { lang = 'fr'; }
   document.documentElement.lang = lang;
   var style = document.createElement('style');
   style.textContent = '#google_translate_element,.goog-te-banner-frame,.goog-te-banner-frame.skiptranslate,iframe.goog-te-banner-frame,.goog-te-balloon-frame{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;visibility:hidden!important;overflow:hidden!important}html,body{top:0!important;margin-top:0!important}body>.skiptranslate{display:none!important}';
