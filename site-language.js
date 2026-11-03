@@ -14,6 +14,8 @@
   style.textContent = [
     '#google_translate_element, .goog-te-banner-frame, iframe.goog-te-banner-frame,',
     'iframe.skiptranslate, .goog-te-balloon-frame, #goog-gt-tt,',
+    'body > iframe, iframe[id^="goog-te"], .goog-te-banner-frame.skiptranslate,',
+    '.skiptranslate.goog-te-banner-frame, .goog-te-spinner-pos,',
     '.VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,',
     'body > .skiptranslate, body > .VIpgJd-ZVi9od-ORHb-OEVmcd {',
     'display:none!important;visibility:hidden!important;height:0!important;',
@@ -21,6 +23,17 @@
     'html,body{top:0!important;margin-top:0!important;}'
   ].join('');
   document.head.appendChild(style);
+  /* Google peut injecter son bandeau après le chargement : le retirer aussi à ce moment-là. */
+  function hideGoogleBanner() {
+    document.querySelectorAll('.goog-te-banner-frame, iframe.skiptranslate, .VIpgJd-ZVi9od-ORHb-OEVmcd').forEach(function (el) {
+      if (el.id !== 'google_translate_element') el.style.setProperty('display', 'none', 'important');
+    });
+    document.documentElement.style.setProperty('top', '0', 'important');
+    if (document.body) document.body.style.setProperty('top', '0', 'important');
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideGoogleBanner);
+  else hideGoogleBanner();
+  new MutationObserver(hideGoogleBanner).observe(document.documentElement, { childList: true, subtree: true });
 
   /* Supprimer tout ancien choix Google, à la fois sur le domaine et sur l'hôte. */
   function clearGoogleCookie(domain) {
