@@ -3,21 +3,12 @@
   'use strict';
   var supported = ['fr', 'en', 'es', 'de', 'it', 'nl', 'ru'];
   var lang = 'fr';
-  /* Le sélecteur de l'accueil enregistre la langue dans sessionStorage.
-     Le cookie Google sert de solution de secours pour les anciennes pages. */
+  /* Le choix de langue est mémorisé pour tous les liens du site.
+     Première visite : français, sans reprise d'un ancien cookie Google. */
   try {
     var saved = sessionStorage.getItem('cocon-lang');
-    if (saved && supported.indexOf(saved) !== -1) {
-      lang = saved;
-    } else {
-      var match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
-      var value = match ? decodeURIComponent(match[1]) : '';
-      var target = value.match(/^\/fr\/([a-z]{2})$/i);
-      if (target && supported.indexOf(target[1].toLowerCase()) !== -1) {
-        lang = target[1].toLowerCase();
-      }
-    }
-    sessionStorage.setItem('cocon-lang', lang);
+    if (saved && supported.indexOf(saved) !== -1) lang = saved;
+    else sessionStorage.setItem('cocon-lang', 'fr');
   } catch (e) {}
   document.documentElement.lang = lang;
 
@@ -59,6 +50,9 @@
     clearGoogleCookie('lecocon14.com');
   }
 
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) window.location.reload();
+  });
   /* En français, ne jamais démarrer le traducteur Google : la page originale
      est déjà en français et ne doit pas conserver la traduction précédente. */
   if (lang === 'fr') return;
