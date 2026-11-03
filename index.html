@@ -62,7 +62,7 @@ main{min-height:65vh}.hero{display:grid;grid-template-columns:1fr 1fr;min-height
 
 /* Accueil signature — photographie de la vitrine, fondu graphite et signature. */
 .hero-home{position:relative;min-height:770px;display:flex!important;align-items:center!important;overflow:hidden!important;padding:clamp(45px,7vw,100px) clamp(25px,8vw,120px)!important;background:#242d2f!important;isolation:isolate}
-.hero-home:before{content:''!important;display:block!important;position:absolute!important;inset:0!important;left:0!important;top:0!important;transform:none!important;width:auto!important;height:auto!important;border:0!important;border-radius:0!important;z-index:-2!important;pointer-events:none!important;background:linear-gradient(90deg,rgba(26,35,38,.98) 0%,rgba(26,35,38,.92) 26%,rgba(26,35,38,.55) 57%,rgba(26,35,38,.33) 100%),linear-gradient(0deg,#222c2f 0%,transparent 35%),url('https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/01.jpg') center 44%/cover no-repeat!important;filter:saturate(.8)}
+.hero-home:before{content:''!important;display:block!important;position:absolute!important;inset:0!important;left:0!important;top:0!important;transform:none!important;width:auto!important;height:auto!important;border:0!important;border-radius:0!important;z-index:-2!important;pointer-events:none!important;background:linear-gradient(90deg,rgba(26,35,38,.98) 0%,rgba(26,35,38,.92) 26%,rgba(26,35,38,.55) 57%,rgba(26,35,38,.33) 100%),linear-gradient(0deg,#222c2f 0%,transparent 35%),url('./01.jpg') center 44%/cover no-repeat!important;filter:saturate(.8)}
 .hero-home:after{content:''!important;position:absolute!important;right:-100px!important;top:8%!important;width:590px!important;height:590px!important;border:1px solid rgba(221,184,145,.18)!important;border-radius:50%!important;pointer-events:none!important}
 .hero-home .copy{max-width:710px!important;padding:20px 0!important;position:relative;z-index:2}
 .hero-logo-lockup{max-width:390px!important;margin:0 0 30px!important}
@@ -73,7 +73,7 @@ main{min-height:65vh}.hero{display:grid;grid-template-columns:1fr 1fr;min-height
 .hero-home .hero-side{display:none!important}
 .hero-home .eyebrow{color:#e4be95}
 .hero-home .btn{box-shadow:0 8px 30px rgba(0,0,0,.15)}
-@media(max-width:760px){.hero-home{min-height:700px;padding:58px 22px!important}.hero-home:before{background:linear-gradient(0deg,rgba(27,36,39,.93),rgba(27,36,39,.60)),url('https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/01.jpg') center/cover no-repeat!important}.hero-home h1{font-size:clamp(52px,11vw,75px)!important}.hero-logo-lockup{max-width:290px!important}}
+@media(max-width:760px){.hero-home{min-height:700px;padding:58px 22px!important}.hero-home:before{background:linear-gradient(0deg,rgba(27,36,39,.93),rgba(27,36,39,.60)),url('./01.jpg') center/cover no-repeat!important}.hero-home h1{font-size:clamp(52px,11vw,75px)!important}.hero-logo-lockup{max-width:290px!important}}
 
 .hero-home.with-storefront{isolation:isolate;background:linear-gradient(90deg,rgba(23,30,33,.94) 0%,rgba(24,31,34,.75) 43%,rgba(24,31,34,.32) 100%),var(--storefront) center center / cover no-repeat;min-height:680px;display:flex;align-items:center}
 .hero-home.with-storefront .copy{width:min(650px,100%);padding:45px 0}
@@ -139,7 +139,7 @@ function home(){const t=LANG[lang];return `${homeHero()}<div class="band"><span>
 function list(){const t=LANG[lang];return `<section class="section"><div class="container"><div class="sectiontop"><span class="eyebrow">LE COCON</span><h1>${t.treatments}</h1><p>${t.intro}</p></div><div class="grid">${SERVICES.map(card).join('')}</div></div></section>${cta()}`}
 function details(s){const t=LANG[lang],i=SERVICES.findIndex(x=>x.id===s.id);return `${hero(t.serviceNames[i],s.subtitle,s.image,t.kicker,'soins',t.back)}<div class="note">${t.illustration}</div><section class="section"><div class="container"><div class="sectiontop"><span class="eyebrow">${t.details}</span><h2>${s.subtitle}</h2><p>${s.detail}</p></div><div class="info-cards"><div class="info-card"><h3>${t.experience}</h3><p>${s.teaser}</p></div><div class="info-card"><h3>${t.practical}</h3><p>12 rue Ménars, 14130 Pont-l’Évêque</p></div><div class="info-card"><h3>Planity</h3><p>${t.info}</p><a class="btn" href="${PLANITY}" target="_blank" rel="noopener">${t.book} ↗</a></div></div><div class="mini-links"><a href="#/soins">← ${t.back}</a><a href="#/bons-cadeaux">${t.tryGift} ↗</a></div></div></section>`}
 
-const SALON_PHOTOS=[CUSTOM_MEDIA.vitrine,...Array.from({length:11},(_,i)=>'https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/'+String(i+2).padStart(2,'0')+'.jpg')];
+const SALON_PHOTOS=[CUSTOM_MEDIA.vitrine,...Array.from({length:11},(_,i)=>'./'+String(i+2).padStart(2,'0')+'.jpg')];
 function salonGallery(){
  const t=LANG[lang];
  return `<section class="photo-section" id="galerie-salon"><div class="photo-heading"><h2>${t.gallery}</h2></div>
