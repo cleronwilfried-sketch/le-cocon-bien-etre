@@ -3,17 +3,10 @@
   'use strict';
   var supported = ['fr', 'en', 'es', 'de', 'it', 'nl', 'ru'];
   var lang = 'fr';
-  /* La page d'accueil utilise Google Translate. Sa valeur réelle est
-     enregistrée dans le cookie googtrans, pas forcément dans cocon-lang.
-     Ne jamais faire confiance à cocon-lang : il peut garder une langue périmée. */
+  /* Une seule source de vérité pour toutes les pages de cet onglet. */
   try {
-    var match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
-    var value = match ? decodeURIComponent(match[1]) : '';
-    var target = value.match(/^\/fr\/([a-z]{2})$/i);
-    if (target && supported.indexOf(target[1].toLowerCase()) !== -1) {
-      lang = target[1].toLowerCase();
-    }
-    sessionStorage.setItem('cocon-lang', lang);
+    var chosen = sessionStorage.getItem('cocon-lang') || 'fr';
+    lang = supported.indexOf(chosen) !== -1 ? chosen : 'fr';
   } catch (e) {}
   document.documentElement.lang = lang;
 
