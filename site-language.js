@@ -12,6 +12,9 @@
     else lang = cookieLang() || 'fr';
   } catch (e) { lang = cookieLang() || 'fr'; }
   document.documentElement.lang = lang;
+  var style = document.createElement('style');
+  style.textContent = '#google_translate_element,.goog-te-banner-frame,.goog-te-banner-frame.skiptranslate,iframe.goog-te-banner-frame,.goog-te-balloon-frame{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;visibility:hidden!important;overflow:hidden!important}html,body{top:0!important;margin-top:0!important}body>.skiptranslate{display:none!important}';
+  document.head.appendChild(style);
   function setCookie(value, domain) {
     var c = 'googtrans=' + value + '; path=/; SameSite=Lax';
     if (domain) c += '; domain=' + domain;
