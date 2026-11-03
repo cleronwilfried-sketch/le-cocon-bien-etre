@@ -133,6 +133,33 @@ main{min-height:65vh}.hero{display:grid;grid-template-columns:1fr 1fr;min-height
 .navinner .brand .header-treatments > span{display:block!important;font-family:Arial,sans-serif!important;font-size:10px!important;font-weight:500!important;line-height:1.15!important;letter-spacing:.10em!important;color:#dfb98e!important}
 @media(max-width:1060px){.navinner .brand .header-treatments > span{font-size:9px!important;letter-spacing:.05em!important}}
 @media(max-width:600px){.navinner .brand .header-treatments > span{font-size:7px!important;line-height:1.2!important;letter-spacing:0!important}.navinner .brand .header-treatments{gap:2px!important;padding-left:7px!important}.navinner .brand{gap:6px!important}}
+
+/* Navigation harmonisée : éléments centrés, colonnes égales, aucun chevauchement. */
+@media(min-width:1101px){
+  .navinner{gap:clamp(10px,1.2vw,20px)!important}
+  .navinner .links{display:flex;flex:1 1 auto;min-width:0;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:clamp(10px,1vw,18px);row-gap:11px}
+  .navinner .links a{display:block;text-align:center;white-space:normal;line-height:1.35;font-size:10px;max-width:130px}
+  .navinner #language{flex-shrink:0}
+}
+@media(max-width:1100px){
+  .navinner{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 16px}
+  .navinner .brand{margin-right:auto;min-width:0}
+  .navinner .hamb{display:block;order:2;margin-left:auto;flex-shrink:0}
+  .navinner #language{order:3;flex-shrink:0}
+  .navinner .links{display:none;order:4;flex-basis:100%;width:100%;min-width:0;flex-direction:unset;align-items:unset;margin:0;padding:10px 0 3px;gap:8px;border-top:1px solid var(--line)}
+  .navinner .links.open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+  .navinner .links a{display:flex;align-items:center;justify-content:center;min-width:0;min-height:46px;padding:10px 7px;text-align:center;font-size:11px;line-height:1.35;letter-spacing:.04em;overflow-wrap:break-word;border:1px solid rgba(223,188,140,.22)}
+  .navinner .links a:last-child{grid-column:1/-1}
+}
+@media(max-width:420px){
+  .navinner{gap:7px;padding:9px 10px}
+  .navinner .brand #brand-logo{width:86px!important;height:54px!important;flex-basis:86px!important}
+  .navinner .brand .header-treatments > span{font-size:7px!important}
+  .navinner #language{max-width:77px;padding:8px 4px;font-size:11px}
+  .navinner .hamb{padding:3px 7px;font-size:21px}
+  .navinner .links{gap:6px}
+  .navinner .links a{font-size:10px}
+}
 </style></head><body><header class="nav"><div class="navinner"><a class="brand" href="#/" aria-label="Le Cocon — accueil"><img id="brand-logo" alt="Le Cocon Bien-être — logo complet"><span class="header-treatments" aria-label="Head spa, modelage, massage, naturopathie"><span>HEAD SPA</span><span>MODELAGE</span><span>MASSAGE</span><span>NATUROPATHIE</span></span></a><button id="hamb" class="hamb" aria-expanded="false" aria-label="Ouvrir le menu">☰</button><nav id="links" class="links" aria-label="Navigation principale"></nav><select id="language" aria-label="Choisir la langue"><option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option><option value="es">🇪🇸 ES</option><option value="de">🇩🇪 DE</option><option value="it">🇮🇹 IT</option><option value="nl">🇳🇱 NL</option><option value="ru">🇷🇺 RU</option></select></div></header><main id="app"></main><footer><div class="foot"><div><strong>LE COCON</strong><p class="footer-address">12 rue Ménars · 14130 Pont-l’Évêque<br><a href="tel:+33259163936">02 59 16 39 36</a></p><p id="footer-note"></p></div><div class="footer-links" id="footer-nav"></div></div></footer><div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true"><button aria-label="Fermer la photo" id="close-lightbox">×</button><img alt="Photo agrandie" id="big-image" style="display:none"></div><script>
 const HEADER_ORIGINAL_LOTUS='assets/logo-le-cocon.png';
 const ASSETS={"naturopathie": "assets/naturopathie.webp", "massage-pierres-chaudes": "assets/massage-pierres-chaudes.webp", "massage-bien-etre": "assets/massage-bien-etre.webp", "head-spa": "assets/head-spa.webp", "reflexologie-plantaire": "assets/reflexologie-plantaire.webp", "reflexologie-palmaire": "assets/reflexologie-palmaire.webp", "logo-le-cocon": "assets/logo-le-cocon.png"};
