@@ -10,9 +10,9 @@
     if (saved && supported.indexOf(saved) !== -1) {
       lang = saved;
     } else {
-      var match = document.cookie.match(/(?:^|;\\s*)googtrans=([^;]*)/);
+      var match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
       var value = match ? decodeURIComponent(match[1]) : '';
-      var target = value.match(/^\\/fr\\/([a-z]{2})$/i);
+      var target = value.match(/^\/fr\/([a-z]{2})$/i);
       if (target && supported.indexOf(target[1].toLowerCase()) !== -1) {
         lang = target[1].toLowerCase();
       }
