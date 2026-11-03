@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#202625">
+<title>Le Cocon — Démo design premium | Head Spa & Modelage</title>
+<meta name="description" content="Démo de la nouvelle expérience Le Cocon, salon Head Spa et Modelage à Pont-l'Évêque.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#202625;--bg2:#29312f;--deep:#151b1a;--ivory:#f8f1e5;--soft:#d5c9b8;--gold:#d5b37b;--gold2:#a9854f;--border:rgba(213,179,123,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ivory);font-family:"DM Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;width:100%}
+::selection{background:var(--gold);color:var(--deep)}
+.skip{position:absolute;left:-10000px}.skip:focus{left:10px;top:10px;z-index:9999;background:white;color:black;padding:10px}
+.demo{background:var(--gold);color:#202625;text-align:center;padding:8px 12px;font:700 11px/1.4 "DM Sans",sans-serif;letter-spacing:.15em;text-transform:uppercase}
+header{position:sticky;top:0;z-index:100;background:rgba(25,31,29,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav{max-width:1340px;margin:auto;padding:17px clamp(20px,5vw,72px);display:flex;align-items:center;gap:36px}
+.brand{font:500 clamp(25px,2.2vw,30px)/1 "Playfair Display",Georgia,serif;letter-spacing:.15em;white-space:nowrap}.brand small{display:block;letter-spacing:.23em;font:600 9px/1.8 "DM Sans",sans-serif;color:var(--gold);margin-top:5px}
+.links{display:flex;align-items:center;gap:27px;margin-left:auto}.links a:not(.nav-cta){font-size:12px;letter-spacing:.06em;color:#e6ded1;transition:color .2s}.links a:hover{color:var(--gold)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border:1px solid var(--gold);background:var(--gold);color:#202625;padding:15px 25px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;transition:all .2s;cursor:pointer}
+.nav-cta:hover,.btn:hover{background:var(--ivory);border-color:var(--ivory);transform:translateY(-1px)}.btn svg{width:16px;height:16px}
+.menu-button{display:none;color:var(--ivory);background:none;border:1px solid var(--border);font-size:24px;padding:6px 11px}
+.hero{min-height:690px;position:relative;overflow:hidden;display:grid;grid-template-columns:53% 47%;background:var(--deep)}
+.hero-copy{z-index:2;padding:clamp(80px,11vw,154px) 35px 85px max(7vw,calc((100vw - 1320px)/2 + 54px));position:relative}
+.hero-copy:before{content:"";position:absolute;width:540px;height:540px;border:1px solid rgba(213,179,123,.12);border-radius:50%;left:-280px;top:5%;pointer-events:none}
+.kicker{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:11px;letter-spacing:.23em;text-transform:uppercase;font-weight:700}
+.kicker:before{content:"";width:29px;height:1px;background:var(--gold)}
+h1,h2,h3,.serif{font-family:"Playfair Display",Georgia,serif;font-weight:400}
+h1{font-size:clamp(57px,6vw,103px);line-height:1.05;letter-spacing:-.038em;margin:30px 0 30px}
+h1 em{font-style:italic;color:var(--gold);font-weight:400}
+.hero-p{font-size:15px;line-height:1.95;color:var(--soft);max-width:430px;margin-bottom:38px}
+.hero-buttons{display:flex;align-items:center;gap:25px;flex-wrap:wrap}
+.text-link{color:var(--ivory);font-size:11px;text-transform:uppercase;letter-spacing:.16em;border-bottom:1px solid var(--gold);padding-bottom:9px;transition:color .2s}.text-link:hover{color:var(--gold)}
+.hero-photo{position:relative;min-height:640px;overflow:hidden}
+.hero-photo img{height:100%;object-fit:cover;filter:brightness(.78) saturate(.84);transition:transform 1.4s}.hero-photo:hover img{transform:scale(1.04)}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#151b1a 0%,transparent 22%),linear-gradient(0deg,rgba(21,27,26,.47),transparent 28%)}
+.hero-photo .seal{position:absolute;right:8%;bottom:9%;z-index:2;color:#f7eee1;border:1px solid rgba(248,241,229,.6);width:145px;height:145px;border-radius:50%;display:grid;place-content:center;text-align:center;font:14px/1.4 "Playfair Display",serif;letter-spacing:.02em;transform:rotate(-8deg)}
+.seal span{font:600 9px/1.4 "DM Sans",sans-serif;letter-spacing:.2em;color:var(--gold);margin-top:8px}
+.scroll-cue{position:absolute;bottom:24px;left:7vw;font-size:10px;letter-spacing:.2em;color:rgba(248,241,229,.6);text-transform:uppercase}
+.container{max-width:1300px;margin:auto;padding:0 clamp(20px,5vw,64px)}section.section{padding:105px 0}
+.section-head{text-align:center;margin-bottom:53px}.section-head .kicker{justify-content:center}.section-head h2{font-size:clamp(40px,4.9vw,67px);line-height:1.16;margin:17px 0 17px;letter-spacing:-.025em}.section-head p{color:var(--soft);font-size:14px;line-height:1.9;max-width:630px;margin:auto}
+.intro-band{padding:26px 20px;display:flex;justify-content:center;gap:clamp(15px,5vw,75px);align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--border);background:#262d2b;font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#d7c6ab}
+.intro-band span{display:flex;gap:12px;align-items:center}.intro-band b{font:400 21px "Playfair Display",Georgia,serif;color:var(--gold)}
+.services{background:var(--bg)}
+.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.service-card{background:var(--bg2);border:1px solid var(--border);display:flex;flex-direction:column;min-width:0;transition:border-color .25s,transform .25s;overflow:hidden}
+.service-card:hover{transform:translateY(-5px);border-color:var(--gold)}
+.service-picture{height:270px;position:relative;overflow:hidden;display:block}
+.service-picture img{height:100%;object-fit:cover;filter:brightness(.83);transition:transform .6s,filter .5s}
+.service-card:hover img{transform:scale(1.06);filter:brightness(.98)}
+.service-picture:after{content:"";position:absolute;inset:0;box-shadow:inset 0 -65px 60px -55px #29312f}
+.service-num{position:absolute;top:20px;left:21px;z-index:1;color:var(--ivory);font-size:11px;letter-spacing:.15em}
+.service-content{padding:27px 28px 29px;display:flex;flex-direction:column;flex:1}
+.service-content h3{font-size:29px;margin:0 0 13px;line-height:1.25}
+.service-content p{font-size:13px;line-height:1.85;color:var(--soft);margin:0 0 26px}
+.service-action{margin-top:auto;display:flex;align-items:center;justify-content:space-between;color:var(--gold);font-size:10px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;border-top:1px solid var(--border);padding-top:18px}
+.service-action span:last-child{font-size:21px;font-weight:400}
+.experience{background:#e9dfcf;color:#242b29;display:grid;grid-template-columns:1fr 1fr;min-height:620px}
+.experience-image{min-height:560px;position:relative}.experience-image img{height:100%;object-fit:cover}
+.experience-text{padding:clamp(55px,7vw,105px);align-self:center}
+.experience .kicker{color:#967342}.experience .kicker:before{background:#967342}
+.experience h2{font-size:clamp(42px,4.4vw,67px);line-height:1.15;margin:25px 0 25px;letter-spacing:-.03em}
+.experience p{line-height:2;font-size:14px;color:#53605a;max-width:500px}
+.experience .btn{margin-top:25px;background:#29312f;border-color:#29312f;color:white}
+.gallery{background:var(--deep)}
+.gallery-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:210px 210px;gap:12px}
+.gallery-grid button{padding:0;border:0;background:var(--bg2);cursor:zoom-in;overflow:hidden;position:relative}
+.gallery-grid button:first-child{grid-row:span 2}
+.gallery-grid img{height:100%;object-fit:cover;filter:saturate(.8);transition:transform .5s,filter .5s}
+.gallery-grid button:hover img{transform:scale(1.06);filter:saturate(1.06)}
+.gallery-grid button:after{content:"+";position:absolute;right:16px;bottom:12px;color:white;font-size:25px;font-weight:200;opacity:0;transition:opacity .2s}
+.gallery-grid button:hover:after{opacity:1}
+.gallery-note{text-align:center;color:var(--soft);font-size:12px;margin-top:22px}
+.cta-section{padding:95px 25px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3b4037 0%,#252c29 52%,#1b2220 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-section .kicker{justify-content:center}.cta-section h2{font-size:clamp(42px,5.7vw,75px);margin:24px auto;line-height:1.2;max-width:800px}.cta-section p{max-width:540px;color:var(--soft);font-size:14px;line-height:1.9;margin:0 auto 30px}
+footer{background:#161d1b;padding:60px 0 32px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:45px}
+.footer-brand{font:36px "Playfair Display",serif;letter-spacing:.12em}.footer-brand small{display:block;font:10px "DM Sans",sans-serif;letter-spacing:.2em;color:var(--gold);margin-top:9px}
+footer h4{color:var(--gold);font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 18px}
+footer p,footer a{color:var(--soft);font-size:13px;line-height:2}footer a:hover{color:var(--gold)}
+.foot-bottom{border-top:1px solid var(--border);margin-top:48px;padding-top:24px;font-size:11px;color:#acaa9c;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.lightbox{position:fixed;inset:0;background:rgba(10,13,12,.95);z-index:300;display:none;align-items:center;justify-content:center;padding:65px 30px 30px}
+.lightbox.open{display:flex}.lightbox img{width:auto;max-width:95%;max-height:90%;object-fit:contain}.lightbox-close{position:absolute;right:24px;top:19px;font-size:36px;color:white;background:none;border:0;cursor:pointer}
+@media(max-width:1050px){.links{gap:16px}.links a:not(.nav-cta){font-size:11px}.hero-copy{padding-left:6vw}.service-picture{height:230px}.service-content{padding:23px}}
+@media(max-width:800px){.menu-button{display:block;margin-left:auto}.links{display:none;position:absolute;top:100%;left:0;right:0;padding:20px;background:#1b2220;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--gold)}.links.open{display:flex}.links a{padding:14px;font-size:13px!important}.links .nav-cta{margin-top:10px}.hero{grid-template-columns:1fr}.hero-copy{padding:80px 7vw 70px}.hero-photo{min-height:390px;height:50vw}.hero-photo:after{background:linear-gradient(0deg,rgba(21,27,26,.55),transparent 30%)}.scroll-cue{display:none}.service-grid{grid-template-columns:repeat(2,1fr)}.experience{grid-template-columns:1fr}.experience-image{height:400px;min-height:0}.experience-text{padding:65px 8vw}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
+@media(max-width:560px){.nav{padding:15px 20px}.brand{font-size:24px}.hero-copy{padding:62px 25px 58px}.hero h1{font-size:clamp(56px,13vw,76px)}.hero-photo{height:380px;min-height:0}.hero-photo .seal{width:110px;height:110px;font-size:11px}section.section{padding:72px 0}.section-head{margin-bottom:35px}.section-head h2{font-size:43px}.service-grid{grid-template-columns:1fr}.service-picture{height:270px}.intro-band{justify-content:space-between;gap:15px}.intro-band span{font-size:9px;letter-spacing:.09em}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}.gallery-grid button:first-child{grid-column:1/-1;grid-row:auto}.gallery-grid button:nth-child(5){display:none}.experience-image{height:320px}.experience-text{padding:55px 25px}.cta-section{padding:75px 20px}.footer-grid{grid-template-columns:1fr;gap:25px}.footer-grid>div:first-child{grid-column:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="demo">Concept artistique — version de démonstration · Le site officiel reste inchangé</div>
+<header>
+ <nav class="nav" aria-label="Navigation principale">
+  <a class="brand" href="#haut">LE COCON<small>HEAD SPA &amp; MODELAGE · PONT-L’ÉVÊQUE</small></a>
+  <button id="mobile-menu" class="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  <div class="links" id="nav-links">
+   <a href="#prestations">Nos soins</a><a href="#experience">Le Cocon</a><a href="#galerie">Galerie</a><a href="./contact-acces.html">Contact</a>
+   <a class="nav-cta" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer">Réserver ↗</a>
+  </div>
+ </nav>
+</header>
+<main id="main">
+ <section class="hero" id="haut">
+  <div class="hero-copy">
+   <div class="kicker">Votre parenthèse de bien-être</div>
+   <h1>Le luxe<br>de <em>ralentir.</em></h1>
+   <p class="hero-p">Au cœur de Pont-l’Évêque, Le Cocon vous invite à un moment hors du temps. Head Spa, massages et soins dédiés à votre détente, dans un univers chaleureux et apaisant.</p>
+   <div class="hero-buttons">
+    <a class="btn" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer">Prendre rendez-vous <span aria-hidden="true">↗</span></a>
+    <a class="text-link" href="#prestations">Découvrir les soins</a>
+   </div>
+  </div>
+  <a class="hero-photo" href="./head-spa.html" aria-label="Découvrir le Head Spa">
+   <img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/01.jpg" alt="Ambiance du salon Le Cocon" fetchpriority="high">
+   <span class="seal">Un instant<br>rien que<br>pour vous<span>LE COCON</span></span>
+  </a>
+  <span class="scroll-cue">↓ Faites défiler pour découvrir</span>
+ </section>
+ <div class="intro-band" aria-label="Les engagements du Cocon"><span><b>✦</b> Parenthèse de douceur</span><span><b>✦</b> Soins personnalisés</span><span><b>✦</b> Pont-l’Évêque · Normandie</span></div>
+ <section class="section services" id="prestations">
+  <div class="container">
+   <div class="section-head"><div class="kicker">L’art de prendre soin de soi</div><h2>Nos rituels de bien-être</h2><p>Des instants pensés pour vous ressourcer. Explorez les prestations et trouvez le soin qui vous ressemble.</p></div>
+   <div class="service-grid">
+    <article class="service-card"><a class="service-picture" href="./head-spa.html"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/02.jpg" loading="lazy" alt="Découvrir le Head Spa"><span class="service-num">01 — RITUEL</span></a><div class="service-content"><h3>Head Spa</h3><p>Une expérience enveloppante consacrée à la détente du cuir chevelu et à un véritable lâcher-prise.</p><a class="service-action" href="./head-spa.html"><span>Découvrir le rituel</span><span>↗</span></a></div></article>
+    <article class="service-card"><a class="service-picture" href="./massage-bien-etre.html"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/03.jpg" loading="lazy" alt="Découvrir les massages bien-être"><span class="service-num">02 — DÉTENTE</span></a><div class="service-content"><h3>Massages bien-être</h3><p>Des gestes apaisants pour relâcher les tensions et s’accorder un moment profondément réconfortant.</p><a class="service-action" href="./massage-bien-etre.html"><span>Découvrir les massages</span><span>↗</span></a></div></article>
+    <article class="service-card"><a class="service-picture" href="./massage-pierres-chaudes.html"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/04.jpg" loading="lazy" alt="Découvrir le massage aux pierres chaudes"><span class="service-num">03 — CHALEUR</span></a><div class="service-content"><h3>Pierres chaudes</h3><p>L’alliance de la chaleur des pierres et des mouvements de modelage pour une parenthèse de douceur.</p><a class="service-action" href="./massage-pierres-chaudes.html"><span>Découvrir le soin</span><span>↗</span></a></div></article>
+    <article class="service-card"><a class="service-picture" href="./reflexologie-plantaire.html"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/05.jpg" loading="lazy" alt="Découvrir la réflexologie plantaire"><span class="service-num">04 — ÉQUILIBRE</span></a><div class="service-content"><h3>Réflexologie plantaire</h3><p>Une approche douce par pressions ciblées sur les pieds, invitant à une profonde relaxation.</p><a class="service-action" href="./reflexologie-plantaire.html"><span>Découvrir le soin</span><span>↗</span></a></div></article>
+    <article class="service-card"><a class="service-picture" href="./reflexologie-palmaire.html"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/06.jpg" loading="lazy" alt="Découvrir la réflexologie palmaire"><span class="service-num">05 — SÉRÉNITÉ</span></a><div class="service-content"><h3>Réflexologie palmaire</h3><p>Un soin de détente des mains pour ralentir, relâcher et retrouver un instant de calme.</p><a class="service-action" href="./reflexologie-palmaire.html"><span>Découvrir le soin</span><span>↗</span></a></div></article>
+    <article class="service-card"><a class="service-picture" href="./naturopathie.html"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/07.jpg" loading="lazy" alt="Découvrir la naturopathie"><span class="service-num">06 — HARMONIE</span></a><div class="service-content"><h3>Naturopathie</h3><p>Un accompagnement autour de l’hygiène de vie et de vos habitudes pour mieux prendre soin de vous.</p><a class="service-action" href="./naturopathie.html"><span>Découvrir l’approche</span><span>↗</span></a></div></article>
+   </div>
+  </div>
+ </section>
+ <section class="experience" id="experience">
+  <div class="experience-image"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/08.jpg" loading="lazy" alt="L'univers de détente du Cocon"></div>
+  <div class="experience-text"><div class="kicker">Bienvenue chez vous</div><h2>Un lieu pensé pour <em>vous.</em></h2><p>À Pont-l’Évêque, Le Cocon cultive une certaine idée du bien-être : de l’attention, de la douceur et le plaisir de prendre du temps pour soi.</p><p>Laissez le quotidien à la porte et entrez dans un univers propice à la relaxation, près de Deauville, Honfleur et Lisieux.</p><a class="btn" href="./contact-acces.html">Nous trouver <span>↗</span></a></div>
+ </section>
+ <section class="section gallery" id="galerie">
+  <div class="container"><div class="section-head"><div class="kicker">Un aperçu de notre univers</div><h2>Entrez dans Le Cocon</h2><p>Découvrez l’atmosphère du salon en images. Cliquez sur une photographie pour l’agrandir.</p></div>
+   <div class="gallery-grid">
+    <button aria-label="Agrandir la photo 1" data-image="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/09.jpg"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/09.jpg" loading="lazy" alt="Photo du salon 1"></button>
+    <button aria-label="Agrandir la photo 2" data-image="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/10.jpg"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/10.jpg" loading="lazy" alt="Photo du salon 2"></button>
+    <button aria-label="Agrandir la photo 3" data-image="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/11.jpg"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/11.jpg" loading="lazy" alt="Photo du salon 3"></button>
+    <button aria-label="Agrandir la photo 4" data-image="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/12.jpg"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/12.jpg" loading="lazy" alt="Photo du salon 4"></button>
+    <button aria-label="Agrandir la photo 5" data-image="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/02.jpg"><img src="https://raw.githubusercontent.com/cleronwilfried-sketch/le-cocon-bien-etre/main/02.jpg" loading="lazy" alt="Photo du salon 5"></button>
+   </div>
+   <p class="gallery-note">Toutes les photos de cette démo proviennent de la galerie déjà présente dans le dépôt du Cocon.</p>
+  </div>
+ </section>
+ <section class="cta-section"><div class="kicker">Offrez-vous un moment à part</div><h2>Votre prochaine parenthèse commence ici.</h2><p>Retrouvez les soins, les tarifs et les disponibilités du Cocon sur Planity.</p><a class="btn" href="https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque" target="_blank" rel="noopener noreferrer">Réserver mon moment <span>↗</span></a></section>
+</main>
+<footer><div class="container"><div class="footer-grid">
+ <div><div class="footer-brand">LE COCON<small>HEAD SPA &amp; MODELAGE</small></div><p>Un havre de détente à Pont-l’Évêque,<br>au cœur du Pays d’Auge.</p></div>
+ <div><h4>Explorer</h4><a href="#prestations">Nos prestations</a><br><a href="#galerie">Galerie photos</a><br><a href="./contact-acces.html">Contact et accès</a></div>
+ <div><h4>Nous contacter</h4><p>12 rue Ménars<br>14130 Pont-l’Évêque</p><a href="tel:+33259163936">02 59 16 39 36</a><br><a href="mailto:salon@lecocon14.com">salon@lecocon14.com</a></div>
+ </div><div class="foot-bottom"><span>© 2026 Le Cocon — Démonstration non publiée</span><span><a href="./mentions-legales.html">Mentions légales</a> · <a href="./politique-confidentialite.html">Confidentialité</a></span></div></div></footer>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie" aria-hidden="true"><button class="lightbox-close" id="lightbox-close" aria-label="Fermer">×</button><img id="lightbox-image" alt="Photo agrandie"></div>
+<script>
+(function(){
+ const menu=document.getElementById('mobile-menu'),links=document.getElementById('nav-links');
+ menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'×':'☰'});
+ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));
+ const modal=document.getElementById('lightbox'),image=document.getElementById('lightbox-image'),close=document.getElementById('lightbox-close');let previous=null;
+ function hide(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';image.removeAttribute('src');if(previous)previous.focus()}
+ document.querySelectorAll('[data-image]').forEach(b=>b.addEventListener('click',()=>{previous=b;image.src=b.dataset.image;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';close.focus()}));
+ close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))hide()});
+})();
+</script>
+</body></html>
