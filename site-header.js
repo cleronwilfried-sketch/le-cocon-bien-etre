@@ -6,7 +6,7 @@ const header=document.querySelector('header.nav');if(!header)return;
 const logo=header.querySelector('#brand-logo'),select=header.querySelector('#language'),nav=header.querySelector('#links'),hamb=header.querySelector('#hamb');
 if(logo)logo.src='/assets/logo-le-cocon.png';
 const companyNames={fr:'Entreprises',en:'Businesses',es:'Empresas',de:'Unternehmen',it:'Aziende',nl:'Bedrijven',ru:'Компаниям',zh:'企业服务',ja:'法人向け'};
-const keys=['','soins','experience','galerie','cartes-cadeaux','entreprises','contact'];
+const keys=['','soins','le-lieu','galerie','cartes-cadeaux','entreprises','contact'];
 const planity='https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque';
 function readLang(){try{const v=localStorage.getItem('lecocon-lang');return langNames[v]?v:'fr'}catch(e){return 'fr'}}
 let lang=readLang();
