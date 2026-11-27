@@ -5,13 +5,14 @@ const headerNames={fr:['HEAD SPA','MODELAGE','MASSAGE','NATUROPATHIE'],en:['HEAD
 const header=document.querySelector('header.nav');if(!header)return;
 const logo=header.querySelector('#brand-logo'),select=header.querySelector('#language'),nav=header.querySelector('#links'),hamb=header.querySelector('#hamb');
 if(logo)logo.src='/assets/logo-le-cocon.png';
+const companyNames={fr:'Entreprises',en:'Businesses',es:'Empresas',de:'Unternehmen',it:'Aziende',nl:'Bedrijven',ru:'Компаниям',zh:'企业服务',ja:'法人向け'};
 const keys=['','soins','experience','galerie','bons-cadeaux','contact'];
 const planity='https://www.planity.com/le-cocon-head-spa-modelage-14130-pont-leveque';
 function readLang(){try{const v=localStorage.getItem('lecocon-lang');return langNames[v]?v:'fr'}catch(e){return 'fr'}}
 let lang=readLang();
 function paint(){
 const words=langNames[lang]||langNames.fr;
-nav.innerHTML=keys.map((route,i)=>'<a href="/#/'+route+'">'+words[i]+'</a>').join('')+'<a href="'+planity+'" target="_blank" rel="noopener">'+words[6]+' ↗</a>';
+nav.innerHTML=keys.map((route,i)=>'<a href="/#/'+route+'">'+words[i]+'</a>').join('')+'<a href="/massages-en-entreprise.html">'+companyNames[lang]+'</a>'+'<a href="'+planity+'" target="_blank" rel="noopener">'+words[6]+' ↗</a>';
 header.querySelectorAll('.header-treatments > span').forEach((item,i)=>{item.textContent=(headerNames[lang]||headerNames.fr)[i]});
 select.value=lang;
 }
