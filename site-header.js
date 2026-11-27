@@ -22,6 +22,7 @@ select.value=lang;
 paintFooter();
 }
 paint();
+const consentScript=document.createElement('script');consentScript.src='/site-consent.js?v=1';document.head.append(consentScript);
 select.addEventListener('change',function(){lang=this.value;try{localStorage.setItem('lecocon-lang',lang)}catch(e){}paint();if(lang!=='fr'){const id=document.body.getAttribute('data-legacy-route');window.location.assign('/#/'+id);}else{document.documentElement.lang='fr'}});
 hamb.addEventListener('click',function(){const expanded=nav.classList.toggle('open');hamb.setAttribute('aria-expanded',String(expanded))});
 document.addEventListener('click',function(e){if(!header.contains(e.target)){nav.classList.remove('open');hamb.setAttribute('aria-expanded','false')}});
